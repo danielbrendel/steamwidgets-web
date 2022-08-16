@@ -1,0 +1,103 @@
+.steam-server {
+    position: relative;
+    max-width: 360px;
+    background-color: rgb(22, 32, 45);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 25px;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.steam-server-image {
+    position: relative;
+    width: 100%;
+    height: 176px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.steam-server-infos {
+    position: relative;
+    padding: 15px;
+}
+
+.steam-server-title {
+}
+
+.steam-server-title-left {
+    position: relative;
+    display: inline-block;
+}
+
+.steam-server-title-left-addr {
+    color: rgb(200, 200, 200);
+}
+
+.steam-server-title-left-name {
+    color: rgb(150, 150, 150);
+    font-size: 0.8em;
+}
+
+.steam-server-title-right {
+    position: relative;
+    display: inline-block;
+    float: right;
+}
+
+.steam-server-title-right-count {
+    color: rgb(130, 130, 130);
+    font-size: 0.7em;
+}
+
+.steam-server-title-right-bots {
+    color: rgb(130, 130, 130);
+    font-size: 0.7em;
+}
+
+.steam-server-gameinfo {
+    position: relative;
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.steam-server-gameinfo-item {
+    color: rgb(150, 150, 150);
+    font-size: 0.65em;
+}
+
+.steam-server-gameinfo-item-green {
+    color: rgb(85, 190, 111);
+}
+
+.steam-server-gameinfo-item-red {
+    color: rgb(179, 115, 115);
+}
+
+.steam-server-action {
+    position: relative;
+    display: inline-block;
+    float: right;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.steam-server-action a {
+    color: #D2E885;
+    background: linear-gradient(to bottom, #a4d007 5%, #536904 95%);
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-decoration: none;
+    font-size: 0.9em;
+    font-family: 'Motiva Sans', sans-serif;
+}
+
+.steam-server-action a:hover {
+    color: rgb(250, 250, 250);
+}

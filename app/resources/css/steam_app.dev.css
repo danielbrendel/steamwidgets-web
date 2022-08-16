@@ -1,0 +1,89 @@
+.steam-app {
+    position: relative;
+    max-width: 360px;
+    background-color: rgb(22, 32, 45);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 25px;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.steam-app-image {
+    position: relative;
+    width: 100%;
+    height: 176px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.steam-app-infos {
+    position: relative;
+    padding: 15px;
+}
+
+.steam-app-title {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.steam-app-title-name {
+    display: inline-block;
+    color: rgb(220, 220, 220);
+    font-size: 1.1em;
+    font-family: Verdana, Arial, sans-serif;
+}
+
+.steam-app-title-count {
+    position: relative;
+    display: inline-block;
+    top: 5px;
+    color: rgb(55, 230, 111);
+    font-size: 0.8em;
+    font-family: Verdana, Arial, sans-serif;
+    float: right;
+}
+
+.steam-app-description {
+    width: 100%;
+    color: rgb(150, 150, 150);
+    font-size: 0.8em;
+    font-family: Verdana, Arial, sans-serif;
+    margin-bottom: 20px;
+}
+
+.steam-app-footer {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.steam-app-footer-author {
+    display: inline-block;
+    color: rgb(200, 200, 200);
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 0.8em;
+}
+
+.steam-app-footer-button {
+    display: inline-block;
+    float: right;
+}
+
+.steam-app-footer-button a {
+    color: #D2E885;
+    background: linear-gradient(to bottom, #a4d007 5%, #536904 95%);
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-decoration: none;
+    font-size: 0.9em;
+    font-family: 'Motiva Sans', sans-serif;
+}
+
+.steam-app-footer-button a:hover {
+    color: rgb(250, 250, 250);
+}

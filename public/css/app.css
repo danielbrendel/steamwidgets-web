@@ -1,0 +1,159 @@
+/*
+    app.scss
+*/
+
+html, body {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+@media screen and (min-width: 1088px) {
+    .navbar-start {
+        flex-grow: 1;
+        justify-content: center;
+        transform: translate(11%, -0%)
+    }
+}
+
+.is-font-title {
+    font-family: 'Helvetica', Verdana, Arial, sans-serif;
+    font-size: 20px;
+}
+
+.content-section {
+    padding: 20px;
+}
+
+.content-centered {
+    text-align: center;
+}
+
+.content-top-margin {
+    margin-top: 90px;
+}
+
+@media screen and (max-width: 1088px) {
+    .content-top-margin {
+        margin-top: 58px;
+    }
+}
+
+.content-section h1 {
+    font-size: 2.0em;
+    margin-bottom: 10px;
+}
+
+.content-section h2 {
+    font-size: 1.5em;
+    color: rgb(100, 100, 100);
+}
+
+.content-section h3 {
+    font-size: 1.2em;
+    color: rgb(100, 100, 100);
+    margin-bottom: 30px;
+}
+
+.content-section p {
+    margin-bottom: 20px;
+}
+
+.content-section a {
+    color: #3273dc;
+}
+
+.content-section a:hover {
+    color: #3273dc;
+    text-decoration: underline;
+}
+
+.content-section pre {
+    padding: unset;
+    margin-top: -15px;
+    margin-bottom: -61px;
+    background-color: unset;
+}
+
+.content-section code {
+    background-color: rgb(230, 230, 230);
+    border-radius: 4px;
+}
+
+.content-section ul {
+    list-style: square;
+}
+
+.content-section li {
+    margin-left: 15px;
+}
+
+.content-section table {
+    margin-bottom: 40px;
+}
+
+.content-section tbody {
+    border: 1px solid #ccc;
+}
+
+.content-section td {
+    padding: 15px;
+}
+
+.tr-colored {
+    background-color: rgb(200, 200, 200);
+}
+
+.content-section hr {
+    background-color: rgb(200, 200, 200);
+}
+
+.scroll-to-top {
+    position: fixed;
+    z-index: 3;
+    bottom: 12px;
+    right: 12px;
+}
+
+.scroll-to-top-inner {
+    background-color: rgb(100, 100, 100);
+    border-radius: 50%;
+    padding: 12px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.scroll-to-top-inner a {
+    color: rgb(200, 200, 200);
+}
+
+.scroll-to-top-inner a:hover {
+    color: rgb(200, 200, 200);
+}
+
+.footer {
+    width: 100%;
+    color: rgb(100, 100, 100);
+    background-color: rgb(235, 235, 235);
+    padding: 1rem 1.5rem 1rem;
+}
+
+.footer-frame {
+    width: 100%;
+}
+
+.footer-content {
+    text-align: center;
+}
+
+.footer-content a {
+    color: rgb(130, 130, 130);
+}
+
+.footer-content a:hover {
+    color: rgb(150, 150, 150);
+    text-decoration: none;
+}
