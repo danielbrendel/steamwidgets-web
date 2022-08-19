@@ -39,9 +39,15 @@ class SteamApp
         
         if ((isset($obj->$appid->success)) && ($obj->$appid->success)) {
             $obj->$appid->data->online_count = 0;
+            $obj->$appid->data->rating_count = 0;
 
             try {
                 $obj->$appid->data->online_count = static::queryUserCount($appid);
+            } catch (\Exception $e) {
+            }
+
+            try {
+                $obj->$appid->data->rating_count = static::queryRating($appid);
             } catch (\Exception $e) {
             }
 
@@ -83,5 +89,49 @@ class SteamApp
         }
 
         throw new \Exception('Invalid data response');
+    }
+
+    /**
+     * Query user rating
+     * 
+     * @param $appid
+     * @return int
+     */
+    public static function queryRating($appid)
+    {
+        $url = "https://store.steampowered.com/app/{$appid}/?l=english";
+
+        $handle = curl_init($url);
+
+        curl_setopt($handle, CURLOPT_HEADER, false);
+        curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($handle, CURLOPT_FOLLOWLOCATION, true);
+
+        $response = curl_exec($handle);
+
+        if(curl_error($handle) !== '') {
+            throw new \Exception('cURL error occured');
+        }
+
+        curl_close($handle);
+
+        $metacode = '<meta itemprop="ratingValue" content="';
+        $metaitem = strpos($response, $metacode);
+        if ($metaitem !== false) {
+            $metaitem += strlen($metacode);
+
+            $rating = '';
+            for ($i = $metaitem; $i < strlen($response); $i++) {
+                if (substr($response, $i, 1) === '"') {
+                    break;
+                }
+
+                $rating .= substr($response, $i, 1);
+            }
+
+            return intval($rating);
+        }
+
+        return 0;
     }
 }

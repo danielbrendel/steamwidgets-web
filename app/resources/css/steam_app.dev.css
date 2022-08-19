@@ -29,14 +29,28 @@
     margin-bottom: 10px;
 }
 
-.steam-app-title-name {
+.steam-app-title-left {
     display: inline-block;
+}
+
+.steam-app-title-left-name {
     color: rgb(220, 220, 220);
     font-size: 1.1em;
     font-family: Verdana, Arial, sans-serif;
 }
 
-.steam-app-title-count {
+.steam-app-title-left-rating {
+    position: relative;
+    top: -8px;
+    font-size: 0.8em;
+}
+
+.steam-app-title-left-rating-star-grey {
+    color: transparent;
+    text-shadow: 0 0 0 rgb(200, 200, 200);
+}
+
+.steam-app-title-right {
     position: relative;
     display: inline-block;
     top: 5px;

@@ -103,61 +103,66 @@
 				</tr>
 
 				<tr>
+					<td>rating</td>
+					<td>If set to true then the app rating will be shown as a 5-star-system, otherwise it is hidden</td>
+				</tr>
+
+				<tr class="tr-colored">
 					<td>playtext</td>
 					<td>Specifies the text of the button that eventually links to the Steam products store page</td>
 				</tr>
 
-				<tr class="tr-colored">
+				<tr>
 					<td>author</td>
 					<td>Specify a text that is displayed as the author of the product. You can use <b>:developer</b> and <b>:publisher</b> to dynamically insert the products developer and publisher names</td>
 				</tr>
 
-				<tr>
+				<tr class="tr-colored">
 					<td>width</td>
 					<td>Specify the width of the card</td>
 				</tr>
 
-				<tr class="tr-colored">
+				<tr>
 					<td>height</td>
 					<td>Specify the height of the card</td>
 				</tr>
 
-				<tr>
+				<tr class="tr-colored">
 					<td>style-border / style.border</td>
 					<td>Specify border rounding: Either none, small or max</td>
 				</tr>
 
-				<tr class="tr-colored">
+				<tr>
 					<td>style-shadow / style.shadow</td>
 					<td>You can specify false to prevent displaying box shadow or true to enable (default)</td>
 				</tr>
 
-				<tr>
+				<tr class="tr-colored">
 					<td>style-color-background / style.colorBackground</td>
 					<td>Specify a CSS value for the background color</td>
 				</tr>
 
-				<tr class="tr-colored">
+				<tr>
 					<td>style-color-title / style.colorTitle</td>
 					<td>Specify a CSS value for the title color</td>
 				</tr>
 
-				<tr>
+				<tr class="tr-colored">
 					<td>style-color-description / style.colorDescription</td>
 					<td>Specify a CSS value for the description color</td>
 				</tr>
 
-				<tr class="tr-colored">
+				<tr>
 					<td>style-color-author / style.colorAuthor</td>
 					<td>Specify a CSS value for the author color</td>
 				</tr>
 
-				<tr>
+				<tr class="tr-colored">
 					<td>style-color-onlinecount / style.colorOnlinecount</td>
 					<td>Specify a CSS value for the online count color</td>
 				</tr>
 
-				<tr class="tr-colored">
+				<tr>
 					<td>style-hideimage / style.hideimage</td>
 					<td>Specify whether the card image shall be hidden or not</td>
 				</tr>
