@@ -10,7 +10,6 @@
         <link rel="icon" type="image/png" href="{{ asset('img/logo.png') }}"/>
 
         <link rel="stylesheet" type="text/css" href="{{ asset('css/bulma.css') }}"/>
-		<link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}"/>
         
         <title>{{ env('APP_TITLE') }}</title>
 
@@ -54,6 +53,11 @@
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 window.vue.initNavBar();
+
+                @if ((isset($render_stats_to)) && (isset($render_stats_pw)))
+                    window.statsChart = null;
+					window.vue.renderStats('{{ $render_stats_pw }}', '{{ $render_stats_to }}', '{{ $render_stats_start }}');
+				@endif
             });
         </script>
     </body>

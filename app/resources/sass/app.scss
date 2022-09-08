@@ -109,6 +109,14 @@ body {
     background-color: rgb(200, 200, 200);
 }
 
+.stats-input {
+    padding: 8px;
+    color: rgb(50, 50, 50);
+    background-color: rgb(200, 200, 200);
+    border: 1px solid rgb(100, 100, 100);
+    border-radius: 5px;
+}
+
 .scroll-to-top {
     position: fixed;
     z-index: 3;

@@ -22,5 +22,7 @@ return [
     array('/api/query/server', 'GET', 'api@queryServerInfo'),
     array('/api/query/user', 'GET', 'api@queryUserInfo'),
     array('/api/resource/query', 'GET', 'api@queryResource'),
+    array('/stats/{pw}', 'GET', 'stats@index'),
+    array('/stats/query/{pw}', 'ANY', 'stats@query'),
     array('$404', 'ANY', 'error404@index')
 ];

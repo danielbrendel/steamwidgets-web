@@ -28,6 +28,9 @@ class ApiController extends BaseController {
 
             $data = SteamApp::querySteamData($appid, $language);
 
+            //Save hit
+		    HitsModel::addHit(HitsModel::HITTYPE_MODULE_APP);
+
             return json(array('code' => 200, 'appid' => $appid, 'lang' => $language, 'data' => $data));
         } catch (\Exception $e) {
             return json(array('code' => 500, 'msg' => $e->getMessage()));
@@ -47,6 +50,9 @@ class ApiController extends BaseController {
 
             $data = SteamServer::querySteamData(env('STEAM_API_KEY'), $addr);
 
+            //Save hit
+		    HitsModel::addHit(HitsModel::HITTYPE_MODULE_SERVER);
+
             return json(array('code' => 200, 'addr' => $addr, 'data' => $data));
         } catch (\Exception $e) {
             return json(array('code' => 500, 'msg' => $e->getMessage()));
@@ -65,6 +71,9 @@ class ApiController extends BaseController {
             $steamid = $request->params()->query('steamid', null);
 
             $data = SteamUser::querySteamData(env('STEAM_API_KEY'), $steamid);
+
+            //Save hit
+		    HitsModel::addHit(HitsModel::HITTYPE_MODULE_USER);
 
             return json(array('code' => 200, 'steamid' => $steamid, 'data' => $data));
         } catch (\Exception $e) {
