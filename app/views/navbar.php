@@ -36,11 +36,11 @@
             </div>
 
             <div class="navbar-item">
-                <img src="https://img.shields.io/github/issues/{{ env('APP_PACKAGE') }}?style=social"/>
+                <img src="https://img.shields.io/github/stars/{{ env('APP_PACKAGE') }}?style=social"/>
             </div>
 
             <div class="navbar-item">
-                <img src="https://img.shields.io/github/downloads/{{ env('APP_PACKAGE') }}/total?style=social"/>
+                <img src="https://img.shields.io/npm/dt/{{ env('APP_NPMPACKAGENAME') }}?style=social"/>
             </div>
         </div>
     </div>
