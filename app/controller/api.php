@@ -82,6 +82,28 @@ class ApiController extends BaseController {
     }
 
     /**
+     * Query Steam workshop data
+     * 
+     * @param Asatru\Controller\ControllerArg $request
+     * @return Asatru\View\JsonHandler
+     */
+    public function queryWorkshopInfo($request)
+    {
+        try {
+            $itemid = $request->params()->query('itemid', null);
+
+            $data = SteamWorkshop::querySteamData($itemid);
+
+            //Save hit
+		    HitsModel::addHit(HitsModel::HITTYPE_MODULE_WORKSHOP);
+
+            return json(array('code' => 200, 'itemid' => $itemid, 'data' => $data));
+        } catch (\Exception $e) {
+            return json(array('code' => 500, 'msg' => $e->getMessage()));
+        }
+    }
+
+    /**
      * Query JavaScript or CSS resource for component
      * 
      * @param Asatru\Controller\ControllerArg $request

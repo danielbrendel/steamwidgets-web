@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Class SteamAppModel
+ * Class SteamApp
  * 
  * Responsible for querying Steam game/app data
  */

@@ -26,6 +26,7 @@
 			<li><a href="#steam-app">Steam App Widget</a></li>
 			<li><a href="#steam-server">Steam Server Widget</a></li>
 			<li><a href="#steam-user">Steam User Widget</a></li>
+			<li><a href="#steam-workshop">Steam Workshop Widget</a></li>
 		</ul>
 	</p>
 
@@ -40,8 +41,8 @@
 
 		<br/>
 
-		<i>STEAM_WIDGETS_MODULE</i> can either be <b>app</b> for the Steam App widget, <b>server</b> for the Steam Server widget or 
-		<b>user</b> for the Steam User widget.
+		<i>STEAM_WIDGETS_MODULE</i> can either be <b>app</b> for the Steam App widget, <b>server</b> for the Steam Server widget, 
+		<b>user</b> for the Steam User widget or <b>workshop</b> for the Steam Workshop widget.
 	</p>
 
 	@if (env('APP_SHOWNPMUSAGE', false))
@@ -538,6 +539,143 @@ document.addEventListener('DOMContentLoaded', function() {
 
 				<tr>
 					<td>changeLang(online_yes, online_no, member_since, viewtext)</td>
+					<td>Changes the language of the widget using the given information</td>
+				</tr>
+
+				<tr class="tr-colored">
+					<td>setImageVisibility(visibility)</td>
+					<td>Sets the widget image visibility</td>
+				</tr>
+
+				<tr>
+					<td>remove()</td>
+					<td>Removes the widget from the document</td>
+				</tr>
+			</tbody>
+		</table>
+	</p>
+</div>
+
+<div class="content-section">
+	<a name="steam-workshop"></a><br/><br/>
+
+	<h3>Steam Workshop</h3>
+
+	<p>
+		When referenced the required Steam Workshop module, the minimum code to render a widget is as follows:<br/>
+		<pre>
+			<code class="language-html">
+&lt;steam-workshop itemid="id"&gt;&lt;/steam-workshop&gt;
+			</code>
+		</pre>
+
+		<br/><br/>
+		This renders the following widget:<br/>
+		<steam-workshop itemid="itemid"></steam-workshop>
+	</p>
+
+	<p>
+		<br/>You can define these options:<br/>
+
+		<table>
+			<thead>
+				<tr></tr>
+				<tr></tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><strong>Attribute</strong></td>
+					<td><strong>Value</strong></td>
+				</tr>
+
+				<tr class="tr-colored">
+					<td>itemid</td>
+					<td>Specifies the item ID of the Steam Workshop item</td>
+				</tr>
+
+				<tr>
+					<td>views</td>
+					<td>Specifies the text of the views stats label</td>
+				</tr>
+
+				<tr class="tr-colored">
+					<td>subscriptions</td>
+					<td>Specifies the text of the subscriptions stats label</td>
+				</tr>
+
+				<tr>
+					<td>favorites</td>
+					<td>Specifies the text of the favorites stats label</td>
+				</tr>
+
+				<tr class="tr-colored">
+					<td>author</td>
+					<td>Specifies the author text. Use <b>:creator</b> to insert the creators Steam persona name</td>
+				</tr>
+
+				<tr>
+					<td>viewtext</td>
+					<td>Specifies the text of the button which can be used to go to the Workshop item page</td>
+				</tr>
+
+				<tr class="tr-colored">
+					<td>show-image / showImage</td>
+					<td>Specifies if the workshop item preview image shall be displayed. Defaults to true/1</td>
+				</tr>
+
+				<tr>
+					<td>style-border / style.border</td>
+					<td>Specify border rounding: Either none, small or max</td>
+				</tr>
+
+				<tr class="tr-colored">
+					<td>style-shadow / style.shadow</td>
+					<td>You can specify false to prevent displaying box shadow or true to enable (default)</td>
+				</tr>
+			</tbody>
+		</table>
+	</p>
+
+	<p>
+		You can also dynamically create Steam Workshop widgets via JavaScript:<br/>
+
+		<pre>
+			<code class="language-html">
+&lt;div id="workshop-widget"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+document.addEventListener('DOMContentLoaded', function() {
+    let widget = new SteamWorkshop('#workshop-widget', {
+        itemid: 'id',
+        //You can specify the same attributes as shown in the table above
+    });
+});
+&lt;/script&gt;
+			</code>
+		</pre>
+	</p>
+
+	<p>
+		<br/>The following methods are available for a Steam Workshop element / object:<br/>
+
+		<table>
+			<thead>
+				<tr></tr>
+				<tr></tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><strong>Method</strong></td>
+					<td><strong>Description</strong></td>
+				</tr>
+
+				<tr class="tr-colored">
+					<td>updateWidget()</td>
+					<td>Updates the widget data and displays them</td>
+				</tr>
+
+				<tr>
+					<td>changeLang(views, subscriptions, favorites, author, viewtext)</td>
 					<td>Changes the language of the widget using the given information</td>
 				</tr>
 

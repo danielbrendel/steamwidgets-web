@@ -28,6 +28,10 @@
             <a class="navbar-item" href="{{ url('/#steam-user') }}" onclick="document.getElementById('burger-button').click(); return true;">
                 Steam User
             </a>
+
+            <a class="navbar-item" href="{{ url('/#steam-workshop') }}" onclick="document.getElementById('burger-button').click(); return true;">
+                Steam Workshop
+            </a>
         </div>
 
         <div class="navbar-end">

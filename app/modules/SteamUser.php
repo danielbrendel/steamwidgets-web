@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Class SteamUserModel
+ * Class SteamUser
  * 
  * Responsible for querying Steam user data
  */

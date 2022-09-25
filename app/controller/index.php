@@ -27,16 +27,4 @@ class IndexController extends BaseController {
 		//Generate and return a view by using the helper
 		return parent::view(['content', 'index']);
 	}
-	
-	/**
-	 * Handles URL: /generator
-	 * 
-	 * @param Asatru\Controller\ControllerArg $request
-	 * @return Asatru\View\ViewHandler
-	 */
-	public function generator($request)
-	{
-		//Generate and return a view by using the helper
-		return view('generator', []);
-	}
 }

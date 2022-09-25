@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Class SteamServerModel
+ * Class SteamServer
  * 
  * Responsible for querying Steam server data
  */
