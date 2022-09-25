@@ -1,13 +1,13 @@
 /**
- * SteamCards - Steam Cards for your website
+ * SteamWidgets - Steam Widgets for your website
  * 
  * Module: Steam Server Widget
  * 
  * Visit: https://github.com/danielbrendel
  */
 
- const STEAMCARDS_SERVER_ENDPOINT = 'http://localhost:8000';
- const STEAMCARDS_SERVER_VERSION = 'v1';
+ const STEAMWIDGETS_SERVER_ENDPOINT = 'http://localhost:8000';
+ const STEAMWIDGETS_SERVER_VERSION = 'v1';
  
  /**
   * Class SteamServerElem
@@ -56,7 +56,7 @@
                  styleColorTextDark
              };
  
-             this.setupCard(
+             this.setupWidget(
                  addr,
                  header,
                  width,
@@ -76,7 +76,7 @@
          }
      }
  
-     setupCard(addr, header, width, height, bots, secure_yes, secure_no, hosting_dedicated, hosting_listen, playtext, styleBorder, styleShadow, styleColorBackground, styleColorTextBright, styleColorTextDark)
+     setupWidget(addr, header, width, height, bots, secure_yes, secure_no, hosting_dedicated, hosting_listen, playtext, styleBorder, styleShadow, styleColorBackground, styleColorTextBright, styleColorTextDark)
      {
          var req = new XMLHttpRequest();
          var self = this;
@@ -85,18 +85,18 @@
              if (req.readyState == XMLHttpRequest.DONE) {
                  let json = JSON.parse(req.responseText);
 
-                 if (!document.getElementById('steamcards-server-styles')) {
+                 if (!document.getElementById('steamwidgets-server-styles')) {
                      let link = document.createElement('link');
-                     link.id = 'steamcards-server-styles';
+                     link.id = 'steamwidgets-server-styles';
                      link.rel = 'stylesheet';
                      link.type = 'text/css';
-                     link.href = STEAMCARDS_SERVER_ENDPOINT + '/api/resource/query?type=css&module=server&version=' + STEAMCARDS_SERVER_VERSION;
+                     link.href = STEAMWIDGETS_SERVER_ENDPOINT + '/api/resource/query?type=css&module=server&version=' + STEAMWIDGETS_SERVER_VERSION;
                      document.getElementsByTagName('head')[0].appendChild(link);
                  }
  
-                 let cardImageStyle = '';
+                 let widgetImageStyle = '';
  
-                 let cardStyle = '';
+                 let widgetStyle = '';
                  if ((width !== null) || (styleBorder !== null) || (styleShadow !== true) || (styleColorBackground !== null)) {
                      let widthCode = '';
                      if (width !== null) {
@@ -107,13 +107,13 @@
                      if (styleBorder !== null) {
                          if (styleBorder === 'max') {
                              borderCode = 'border-radius: 25px;';
-                             cardImageStyle = 'border-top-left-radius: 25px; border-top-right-radius: 25px;';
+                             widgetImageStyle = 'border-top-left-radius: 25px; border-top-right-radius: 25px;';
                          } else if (styleBorder === 'small') {
                              borderCode = 'border-radius: 4px;';
-                             cardImageStyle = 'border-top-left-radius: 4px; border-top-right-radius: 4px;';
+                             widgetImageStyle = 'border-top-left-radius: 4px; border-top-right-radius: 4px;';
                          } else if (styleBorder === 'none') {
                              borderCode = 'border-radius: unset;';
-                             cardImageStyle = 'border-top-left-radius: unset; border-top-right-radius: unset;';
+                             widgetImageStyle = 'border-top-left-radius: unset; border-top-right-radius: unset;';
                          }
                      }
  
@@ -127,7 +127,7 @@
                          bgColor = 'background-color: ' + styleColorBackground + ';';
                      }
  
-                     cardStyle = 'style="' + widthCode + borderCode + shadowCode + bgColor + '"';
+                     widgetStyle = 'style="' + widthCode + borderCode + shadowCode + bgColor + '"';
                  }
 
                  let bgimage = '';
@@ -155,8 +155,8 @@
                  }
                  
                  let html = `
-                     <div class="steam-server" ` + ((cardStyle.length > 0) ? cardStyle: '') + `>
-                         <div class="steam-server-image" style="` + bgimage + ` ` + ((header == '') ? 'display: none;' : '') + ` ` + ((height !== null) ? 'height: ' + height + 'px;' : '') + ((cardImageStyle.length > 0) ? cardImageStyle : '') + `"></div>
+                     <div class="steam-server" ` + ((widgetStyle.length > 0) ? widgetStyle: '') + `>
+                         <div class="steam-server-image" style="` + bgimage + ` ` + ((header == '') ? 'display: none;' : '') + ` ` + ((height !== null) ? 'height: ' + height + 'px;' : '') + ((widgetImageStyle.length > 0) ? widgetImageStyle : '') + `"></div>
                      
                          <div class="steam-server-infos">
                             <div class="steam-server-title">
@@ -193,13 +193,13 @@
                  self.innerHTML = html;
              }
          };
-         req.open('GET', STEAMCARDS_SERVER_ENDPOINT + '/api/query/server?addr=' + addr, true);
+         req.open('GET', STEAMWIDGETS_SERVER_ENDPOINT + '/api/query/server?addr=' + addr, true);
          req.send();
      }
  
-     updateCard()
+     updateWidget()
      {
-         this.setupCard(
+         this.setupWidget(
             this.storedData.addr,
             this.storedData.header,
             this.storedData.width,
@@ -227,7 +227,7 @@
         this.storedData.hosting_listen = hosting_listen;
         this.storedData.playtext = playtext;
 
-        this.setupCard(
+        this.setupWidget(
             this.storedData.addr,
             this.storedData.header,
             this.storedData.width,
@@ -258,7 +258,7 @@
             this.storedData.header = '';
         }
         
-        this.setupCard(
+        this.setupWidget(
             this.storedData.addr,
             this.storedData.header,
             this.storedData.width,
@@ -283,7 +283,7 @@
  /**
   * Class SteamServer
   * 
-  * Dynamically create a Steam server card via JavaScript
+  * Dynamically create a Steam server widgets via JavaScript
   */
  class SteamServer
  {
@@ -354,9 +354,9 @@
          }
      }
  
-     updateCard()
+     updateWidget()
      {
-         this.elem.updateCard();
+         this.elem.updateWidget();
      }
 
      changeLang(bots, secure_yes, secure_no, hosting_dedicated, hosting_listen, playtext)
