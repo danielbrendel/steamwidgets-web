@@ -1,13 +1,13 @@
 /**
- * SteamCards - Steam Cards for your website
+ * SteamWidgets - Steam Widgets for your website
  * 
  * Module: Steam User Widget
  * 
  * Visit: https://github.com/danielbrendel
  */
 
- const STEAMCARDS_USER_ENDPOINT = 'http://localhost:8000';
- const STEAMCARDS_USER_VERSION = 'v1';
+ const STEAMWIDGETS_USER_ENDPOINT = 'http://localhost:8000';
+ const STEAMWIDGETS_USER_VERSION = 'v1';
  
  /**
   * Class SteamUserElem
@@ -52,7 +52,7 @@
                  styleColorTextDark
              };
  
-             this.setupCard(
+             this.setupWidget(
                  steamid,
                  header,
                  width,
@@ -70,7 +70,7 @@
          }
      }
  
-     setupCard(steamid, header, width, height, online_yes, online_no, member_since, viewtext, styleBorder, styleShadow, styleColorBackground, styleColorTextBright, styleColorTextDark)
+     setupWidget(steamid, header, width, height, online_yes, online_no, member_since, viewtext, styleBorder, styleShadow, styleColorBackground, styleColorTextBright, styleColorTextDark)
      {
          var req = new XMLHttpRequest();
          var self = this;
@@ -79,18 +79,18 @@
              if (req.readyState == XMLHttpRequest.DONE) {
                  let json = JSON.parse(req.responseText);
 
-                 if (!document.getElementById('steamcards-user-styles')) {
+                 if (!document.getElementById('steamwidgets-user-styles')) {
                      let link = document.createElement('link');
-                     link.id = 'steamcards-user-styles';
+                     link.id = 'steamwidgets-user-styles';
                      link.rel = 'stylesheet';
                      link.type = 'text/css';
-                     link.href = STEAMCARDS_USER_ENDPOINT + '/api/resource/query?type=css&module=user&version=' + STEAMCARDS_USER_VERSION;
+                     link.href = STEAMWIDGETS_USER_ENDPOINT + '/api/resource/query?type=css&module=user&version=' + STEAMWIDGETS_USER_VERSION;
                      document.getElementsByTagName('head')[0].appendChild(link);
                  }
  
-                 let cardImageStyle = '';
+                 let widgetImageStyle = '';
  
-                 let cardStyle = '';
+                 let widgetStyle = '';
                  if ((width !== null) || (styleBorder !== null) || (styleShadow !== true) || (styleColorBackground !== null)) {
                      let widthCode = '';
                      if (width !== null) {
@@ -101,13 +101,13 @@
                      if (styleBorder !== null) {
                          if (styleBorder === 'max') {
                              borderCode = 'border-radius: 25px;';
-                             cardImageStyle = 'border-top-left-radius: 25px; border-top-right-radius: 25px;';
+                             widgetImageStyle = 'border-top-left-radius: 25px; border-top-right-radius: 25px;';
                          } else if (styleBorder === 'small') {
                              borderCode = 'border-radius: 4px;';
-                             cardImageStyle = 'border-top-left-radius: 4px; border-top-right-radius: 4px;';
+                             widgetImageStyle = 'border-top-left-radius: 4px; border-top-right-radius: 4px;';
                          } else if (styleBorder === 'none') {
                              borderCode = 'border-radius: unset;';
-                             cardImageStyle = 'border-top-left-radius: unset; border-top-right-radius: unset;';
+                             widgetImageStyle = 'border-top-left-radius: unset; border-top-right-radius: unset;';
                          }
                      }
  
@@ -121,7 +121,7 @@
                          bgColor = 'background-color: ' + styleColorBackground + ';';
                      }
  
-                     cardStyle = 'style="' + widthCode + borderCode + shadowCode + bgColor + '"';
+                     widgetStyle = 'style="' + widthCode + borderCode + shadowCode + bgColor + '"';
                  }
 
                  let bgimage = '';
@@ -145,8 +145,8 @@
                  member_since = member_since.replace(':day', regdate.getDate());
                  
                  let html = `
-                     <div class="steam-user" ` + ((cardStyle.length > 0) ? cardStyle: '') + `>
-                         <div class="steam-user-image" style="` + bgimage + ` ` + ((header == '') ? 'display: none;' : '') + ` ` + ((height !== null) ? 'height: ' + height + 'px;' : '') + ((cardImageStyle.length > 0) ? cardImageStyle : '') + `"></div>
+                     <div class="steam-user" ` + ((widgetStyle.length > 0) ? widgetStyle: '') + `>
+                         <div class="steam-user-image" style="` + bgimage + ` ` + ((header == '') ? 'display: none;' : '') + ` ` + ((height !== null) ? 'height: ' + height + 'px;' : '') + ((widgetImageStyle.length > 0) ? widgetImageStyle : '') + `"></div>
                      
                          <div class="steam-user-infos">
                             <div class="steam-user-infos-left">
@@ -172,13 +172,13 @@
                  self.innerHTML = html;
              }
          };
-         req.open('GET', STEAMCARDS_USER_ENDPOINT + '/api/query/user?steamid=' + steamid, true);
+         req.open('GET', STEAMWIDGETS_USER_ENDPOINT + '/api/query/user?steamid=' + steamid, true);
          req.send();
      }
  
-     updateCard()
+     updateWidget()
      {
-         this.setupCard(
+         this.setupWidget(
             this.storedData.steamid,
             this.storedData.header,
             this.storedData.width,
@@ -202,7 +202,7 @@
         this.storedData.member_since = member_since;
         this.storedData.viewtext = viewtext;
 
-        this.setupCard(
+        this.setupWidget(
             this.storedData.steamid,
             this.storedData.header,
             this.storedData.width,
@@ -231,7 +231,7 @@
             this.storedData.header = '';
         }
         
-        this.setupCard(
+        this.setupWidget(
             this.storedData.steamid,
             this.storedData.header,
             this.storedData.width,
@@ -254,7 +254,7 @@
  /**
   * Class SteamUser
   * 
-  * Dynamically create a Steam user card via JavaScript
+  * Dynamically create a Steam user widgets via JavaScript
   */
  class SteamUser
  {
@@ -321,9 +321,9 @@
          }
      }
  
-     updateCard()
+     updateWidget()
      {
-         this.elem.updateCard();
+         this.elem.updateWidget();
      }
 
      changeLang(online_yes, online_no, member_since, viewtext)
