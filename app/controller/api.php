@@ -94,15 +94,15 @@ class ApiController extends BaseController {
         $ver = $request->params()->query('version', 'v1');
 
         if ($res === 'js') {
-            if (file_exists(public_path('/js/steamcards/' . $ver . '/steam_' . $module . '.js'))) {
-                return redirect(asset('js/steamcards/' . $ver . '/steam_' . $module . '.js'));
+            if (file_exists(public_path('/js/steamwidgets/' . $ver . '/steam_' . $module . '.js'))) {
+                return redirect(asset('js/steamwidgets/' . $ver . '/steam_' . $module . '.js'));
             } else {
                 http_response_code(404);
                 exit();
             }
         } else if ($res === 'css') {
-            if (file_exists(public_path('/css/steamcards/' . $ver . '/steam_' . $module . '.css'))) {
-                return redirect(asset('css/steamcards/' . $ver . '/steam_' . $module . '.css'));
+            if (file_exists(public_path('/css/steamwidgets/' . $ver . '/steam_' . $module . '.css'))) {
+                return redirect(asset('css/steamwidgets/' . $ver . '/steam_' . $module . '.css'));
             } else {
                 http_response_code(404);
                 exit();
