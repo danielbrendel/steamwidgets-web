@@ -10,12 +10,12 @@
 	<h3>About</h3>
 
 	<p>
-		SteamCards is a clientside web component that offers an easy way to integrate Steam Cards of various Steam
-		entities into your website. Therefore you only need very few code in order to render Steam Cards into your document.
+		{{ env('APP_NAME') }} is a clientside web component that offers an easy way to integrate Steam Widgets of various Steam
+		entities into your website. Therefore you only need very few code in order to render Steam Widgets into your document.
 	</p>
 
 	<p>
-		SteamCards is used via JavaScript. Since JavaScript is supported by all major browser per default it is
+		{{ env('APP_NAME') }} is used via JavaScript. Since JavaScript is supported by all major browser per default it is
 		platform independent and compatible.
 	</p>
 
@@ -30,17 +30,17 @@
 	</p>
 
 	<p>
-		You can use SteamCards by referencing the neccessary JavaScript files from the official SteamCards server as follows:<br/>
+		You can use {{ env('APP_NAME') }} by referencing the neccessary JavaScript files from the official {{ env('APP_NAME') }} server as follows:<br/>
 
 		<pre>
 			<code class="language-html">
-&lt;script src="{{ url('/api/resource/query?type=js&module=STEAM_CARDS_MODULE&version=v1') }}"&gt;&lt;/script&gt;
+&lt;script src="{{ url('/api/resource/query?type=js&module=STEAM_WIDGETS_MODULE&version=v1') }}"&gt;&lt;/script&gt;
 			</code>
 		</pre>
 
 		<br/>
 
-		<i>STEAM_CARDS_MODULE</i> can either be <b>app</b> for the Steam App widget, <b>server</b> for the Steam Server widget or 
+		<i>STEAM_WIDGETS_MODULE</i> can either be <b>app</b> for the Steam App widget, <b>server</b> for the Steam Server widget or 
 		<b>user</b> for the Steam User widget.
 	</p>
 
@@ -61,7 +61,7 @@
 	<h3>Steam App</h3>
 
 	<p>
-		When referenced the required Steam App module, the minimum code to render a card is as follows:<br/>
+		When referenced the required Steam App module, the minimum code to render a widget is as follows:<br/>
 		<pre>
 			<code class="language-html">
 &lt;steam-app appid="620"&gt;&lt;/steam-app&gt;
@@ -69,7 +69,7 @@
 		</pre>
 
 		<br/><br/>
-		This renders the following card:<br/>
+		This renders the following widget:<br/>
 		<steam-app appid="620"></steam-app>
 	</p>
 
@@ -119,12 +119,12 @@
 
 				<tr class="tr-colored">
 					<td>width</td>
-					<td>Specify the width of the card</td>
+					<td>Specify the width of the widget</td>
 				</tr>
 
 				<tr>
 					<td>height</td>
-					<td>Specify the height of the card</td>
+					<td>Specify the height of the widget</td>
 				</tr>
 
 				<tr class="tr-colored">
@@ -164,22 +164,22 @@
 
 				<tr>
 					<td>style-hideimage / style.hideimage</td>
-					<td>Specify whether the card image shall be hidden or not</td>
+					<td>Specify whether the widget image shall be hidden or not</td>
 				</tr>
 			</tbody>
 		</table>
 	</p>
 
 	<p>
-		You can also dynamically create Steam App cards via JavaScript:<br/>
+		You can also dynamically create Steam App widgets via JavaScript:<br/>
 
 		<pre>
 			<code class="language-html">
-&lt;div id="app-card"&gt;&lt;/div&gt;
+&lt;div id="app-widget"&gt;&lt;/div&gt;
 
 &lt;script&gt;
 document.addEventListener('DOMContentLoaded', function() {
-    let card = new SteamApp('#app-card', {
+    let widget = new SteamApp('#app-widget', {
         appid: '620',
         //You can specify the same attributes as shown in the table above
     });
@@ -204,23 +204,23 @@ document.addEventListener('DOMContentLoaded', function() {
 				</tr>
 
 				<tr class="tr-colored">
-					<td>updateCard()</td>
-					<td>Updates the card data and displays them</td>
+					<td>updateWidget()</td>
+					<td>Updates the widget data and displays them</td>
 				</tr>
 
 				<tr>
 					<td>changeLang(lang, playtext, author, onlinecount)</td>
-					<td>Changes the language of the card using the given information</td>
+					<td>Changes the language of the widget using the given information</td>
 				</tr>
 
 				<tr class="tr-colored">
 					<td>setImageVisibility(visibility)</td>
-					<td>Sets the card image visibility</td>
+					<td>Sets the widget image visibility</td>
 				</tr>
 
 				<tr>
 					<td>remove()</td>
-					<td>Removes the card from the document</td>
+					<td>Removes the widget from the document</td>
 				</tr>
 			</tbody>
 		</table>
@@ -235,7 +235,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	<h3>Steam Server</h3>
 
 	<p>
-		When referenced the required Steam Server module, the minimum code to render a card is as follows:<br/>
+		When referenced the required Steam Server module, the minimum code to render a widget is as follows:<br/>
 		<pre>
 			<code class="language-html">
 &lt;steam-server addr="ip:port"&gt;&lt;/steam-server&gt;
@@ -243,7 +243,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		</pre>
 
 		<br/><br/>
-		This renders the following card:<br/>
+		This renders the following widget:<br/>
 		<steam-server addr="ip:port"></steam-server>
 	</p>
 
@@ -268,7 +268,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 				<tr>
 					<td>header</td>
-					<td>If you want to render the card with a header image you may specify the URL to an image here</td>
+					<td>If you want to render the widget with a header image you may specify the URL to an image here</td>
 				</tr>
 
 				<tr class="tr-colored">
@@ -303,12 +303,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 				<tr class="tr-colored">
 					<td>width</td>
-					<td>Specify the width of the card</td>
+					<td>Specify the width of the widget</td>
 				</tr>
 
 				<tr>
 					<td>height</td>
-					<td>Specify the height of the card</td>
+					<td>Specify the height of the widget</td>
 				</tr>
 
 				<tr class="tr-colored">
@@ -340,15 +340,15 @@ document.addEventListener('DOMContentLoaded', function() {
 	</p>
 
 	<p>
-		You can also dynamically create Steam Server cards via JavaScript:<br/>
+		You can also dynamically create Steam Server widgets via JavaScript:<br/>
 
 		<pre>
 			<code class="language-html">
-&lt;div id="server-card"&gt;&lt;/div&gt;
+&lt;div id="server-widget"&gt;&lt;/div&gt;
 
 &lt;script&gt;
 document.addEventListener('DOMContentLoaded', function() {
-    let card = new SteamServer('#server-card', {
+    let widget = new SteamServer('#server-widget', {
         addr: 'ip:port',
         //You can specify the same attributes as shown in the table above
     });
@@ -373,23 +373,23 @@ document.addEventListener('DOMContentLoaded', function() {
 				</tr>
 
 				<tr class="tr-colored">
-					<td>updateCard()</td>
-					<td>Updates the card data and displays them</td>
+					<td>updateWidget()</td>
+					<td>Updates the widget data and displays them</td>
 				</tr>
 
 				<tr>
 					<td>changeLang(bots, secure_yes, secure_no, hosting_dedicated, hosting_listen, playtext)</td>
-					<td>Changes the language of the card using the given information</td>
+					<td>Changes the language of the widget using the given information</td>
 				</tr>
 
 				<tr class="tr-colored">
 					<td>setImageVisibility(visibility)</td>
-					<td>Sets the card image visibility</td>
+					<td>Sets the widget image visibility</td>
 				</tr>
 
 				<tr>
 					<td>remove()</td>
-					<td>Removes the card from the document</td>
+					<td>Removes the widget from the document</td>
 				</tr>
 			</tbody>
 		</table>
@@ -404,7 +404,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	<h3>Steam User</h3>
 
 	<p>
-		When referenced the required Steam User module, the minimum code to render a card is as follows:<br/>
+		When referenced the required Steam User module, the minimum code to render a widget is as follows:<br/>
 		<pre>
 			<code class="language-html">
 &lt;steam-user steamid="id"&gt;&lt;/steam-user&gt;
@@ -412,7 +412,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		</pre>
 
 		<br/><br/>
-		This renders the following card:<br/>
+		This renders the following widget:<br/>
 		<steam-user steamid="steamid"></steam-user>
 	</p>
 
@@ -437,7 +437,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 				<tr>
 					<td>header</td>
-					<td>If you want to render the card with a header image you may specify the URL to an image here</td>
+					<td>If you want to render the widget with a header image you may specify the URL to an image here</td>
 				</tr>
 
 				<tr class="tr-colored">
@@ -462,12 +462,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 				<tr class="tr-colored">
 					<td>width</td>
-					<td>Specify the width of the card</td>
+					<td>Specify the width of the widget</td>
 				</tr>
 
 				<tr>
 					<td>height</td>
-					<td>Specify the height of the card</td>
+					<td>Specify the height of the widget</td>
 				</tr>
 
 				<tr class="tr-colored">
@@ -499,15 +499,15 @@ document.addEventListener('DOMContentLoaded', function() {
 	</p>
 
 	<p>
-		You can also dynamically create Steam User cards via JavaScript:<br/>
+		You can also dynamically create Steam User widgets via JavaScript:<br/>
 
 		<pre>
 			<code class="language-html">
-&lt;div id="user-card"&gt;&lt;/div&gt;
+&lt;div id="user-widget"&gt;&lt;/div&gt;
 
 &lt;script&gt;
 document.addEventListener('DOMContentLoaded', function() {
-    let card = new SteamUser('#user-card', {
+    let widget = new SteamUser('#user-widget', {
         steamid: 'id',
         //You can specify the same attributes as shown in the table above
     });
@@ -532,23 +532,23 @@ document.addEventListener('DOMContentLoaded', function() {
 				</tr>
 
 				<tr class="tr-colored">
-					<td>updateCard()</td>
-					<td>Updates the card data and displays them</td>
+					<td>updateWidget()</td>
+					<td>Updates the widget data and displays them</td>
 				</tr>
 
 				<tr>
 					<td>changeLang(online_yes, online_no, member_since, viewtext)</td>
-					<td>Changes the language of the card using the given information</td>
+					<td>Changes the language of the widget using the given information</td>
 				</tr>
 
 				<tr class="tr-colored">
 					<td>setImageVisibility(visibility)</td>
-					<td>Sets the card image visibility</td>
+					<td>Sets the widget image visibility</td>
 				</tr>
 
 				<tr>
 					<td>remove()</td>
-					<td>Removes the card from the document</td>
+					<td>Removes the widget from the document</td>
 				</tr>
 			</tbody>
 		</table>
