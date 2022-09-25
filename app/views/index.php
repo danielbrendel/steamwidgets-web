@@ -65,13 +65,13 @@
 		When referenced the required Steam App module, the minimum code to render a widget is as follows:<br/>
 		<pre>
 			<code class="language-html">
-&lt;steam-app appid="620"&gt;&lt;/steam-app&gt;
+&lt;steam-app appid="{{ env('APP_EXAMPLE_APP') }}"&gt;&lt;/steam-app&gt;
 			</code>
 		</pre>
 
 		<br/><br/>
 		This renders the following widget:<br/>
-		<steam-app appid="620"></steam-app>
+		<steam-app appid="{{ env('APP_EXAMPLE_APP') }}"></steam-app>
 	</p>
 
 	<p>
@@ -181,7 +181,7 @@
 &lt;script&gt;
 document.addEventListener('DOMContentLoaded', function() {
     let widget = new SteamApp('#app-widget', {
-        appid: '620',
+        appid: '{{ env('APP_EXAMPLE_APP') }}',
         //You can specify the same attributes as shown in the table above
     });
 });
@@ -239,13 +239,13 @@ document.addEventListener('DOMContentLoaded', function() {
 		When referenced the required Steam Server module, the minimum code to render a widget is as follows:<br/>
 		<pre>
 			<code class="language-html">
-&lt;steam-server addr="ip:port"&gt;&lt;/steam-server&gt;
+&lt;steam-server addr="{{ env('APP_EXAMPLE_SERVER') }}"&gt;&lt;/steam-server&gt;
 			</code>
 		</pre>
 
 		<br/><br/>
 		This renders the following widget:<br/>
-		<steam-server addr="ip:port"></steam-server>
+		<steam-server addr="{{ env('APP_EXAMPLE_SERVER') }}"></steam-server>
 	</p>
 
 	<p>
@@ -350,7 +350,7 @@ document.addEventListener('DOMContentLoaded', function() {
 &lt;script&gt;
 document.addEventListener('DOMContentLoaded', function() {
     let widget = new SteamServer('#server-widget', {
-        addr: 'ip:port',
+        addr: '{{ env('APP_EXAMPLE_SERVER') }}',
         //You can specify the same attributes as shown in the table above
     });
 });
@@ -408,13 +408,13 @@ document.addEventListener('DOMContentLoaded', function() {
 		When referenced the required Steam User module, the minimum code to render a widget is as follows:<br/>
 		<pre>
 			<code class="language-html">
-&lt;steam-user steamid="id"&gt;&lt;/steam-user&gt;
+&lt;steam-user steamid="{{ env('APP_EXAMPLE_USER') }}"&gt;&lt;/steam-user&gt;
 			</code>
 		</pre>
 
 		<br/><br/>
 		This renders the following widget:<br/>
-		<steam-user steamid="steamid"></steam-user>
+		<steam-user steamid="{{ env('APP_EXAMPLE_USER') }}"></steam-user>
 	</p>
 
 	<p>
@@ -509,7 +509,7 @@ document.addEventListener('DOMContentLoaded', function() {
 &lt;script&gt;
 document.addEventListener('DOMContentLoaded', function() {
     let widget = new SteamUser('#user-widget', {
-        steamid: 'id',
+        steamid: '{{ env('APP_EXAMPLE_USER') }}',
         //You can specify the same attributes as shown in the table above
     });
 });
@@ -565,13 +565,13 @@ document.addEventListener('DOMContentLoaded', function() {
 		When referenced the required Steam Workshop module, the minimum code to render a widget is as follows:<br/>
 		<pre>
 			<code class="language-html">
-&lt;steam-workshop itemid="id"&gt;&lt;/steam-workshop&gt;
+&lt;steam-workshop itemid="{{ env('APP_EXAMPLE_WORKSHOP') }}"&gt;&lt;/steam-workshop&gt;
 			</code>
 		</pre>
 
 		<br/><br/>
 		This renders the following widget:<br/>
-		<steam-workshop itemid="itemid"></steam-workshop>
+		<steam-workshop itemid="{{ env('APP_EXAMPLE_WORKSHOP') }}"></steam-workshop>
 	</p>
 
 	<p>
@@ -646,7 +646,7 @@ document.addEventListener('DOMContentLoaded', function() {
 &lt;script&gt;
 document.addEventListener('DOMContentLoaded', function() {
     let widget = new SteamWorkshop('#workshop-widget', {
-        itemid: 'id',
+        itemid: '{{ env('APP_EXAMPLE_WORKSHOP') }}',
         //You can specify the same attributes as shown in the table above
     });
 });
