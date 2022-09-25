@@ -10,7 +10,7 @@ Released under the MIT license
 ## Description
 This is the web backend as well as the documentation and resource provider for SteamWidgets.
 SteamWidgets offers the possibility to comfortably render Steam related widgets into your web
-document with as less effort as possible. 
+document with as little effort as possible. 
 
 ## Current featured widgets
 - Steam App Widget: Renders widgets of a Steam app/game
