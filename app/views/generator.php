@@ -240,7 +240,7 @@
         <div id="generator">
             <div class="generator-outer">
                 <div class="generator-headline">
-                    <h1>SteamCards Widget Generator</h1>
+                    <h1>{{ env('APP_NAME') }} Widget Generator</h1>
                 </div>
 
                 <div id="infos">
@@ -287,6 +287,13 @@
                                 <label class="label">Online Count</label>
                                 <div class="control">
                                     <input type="text" class="input" id="inp-widget-app-onlinecount" value=":count playing"/>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label class="label">Rating</label>
+                                <div class="control">
+                                    <input type="text" class="input" id="inp-widget-app-rating" value="0"/>
                                 </div>
                             </div>
 
@@ -516,6 +523,7 @@
                 let author = document.getElementById('inp-widget-app-author').value;
                 let playtext = document.getElementById('inp-widget-app-playtext').value;
                 let onlinecount = document.getElementById('inp-widget-app-onlinecount').value;
+                let rating = document.getElementById('inp-widget-app-rating').value;
                 let width = document.getElementById('inp-widget-app-width').value;
                 let height = document.getElementById('inp-widget-app-height').value;
 
@@ -523,7 +531,7 @@
 
                 let codeOutput = `
 &lt;script src="{{ url('/api/resource/query?type=js&module=app&version=v1') }}"&gt;&lt;/script&gt;
-&lt;steam-app appid="` + appid + `" lang="` + lang + `" author="` + author + `" playtext="` + playtext + `" onlinecount="` + onlinecount + `" width="` + width + `" height="` + height + `"&gt;&lt;/steam-app&gt;
+&lt;steam-app appid="` + appid + `" lang="` + lang + `" author="` + author + `" playtext="` + playtext + `" onlinecount="` + onlinecount + `" rating="` + rating + `" width="` + width + `" height="` + height + `"&gt;&lt;/steam-app&gt;
                 `;
 
                 document.getElementById('widget-code-app').innerHTML = codeOutput;
@@ -535,11 +543,12 @@
 
                 document.getElementById('widget-sample-app').innerHTML = '';
 
-                let sampleCard = new SteamApp('#widget-sample-app', {
+                let sampleWidget = new SteamApp('#widget-sample-app', {
                     appid: appid,
                     lang: lang,
                     playtext: playtext,
                     onlinecount: onlinecount,
+                    rating: rating,
                     width: width,
                     height: height
                 });
@@ -579,7 +588,7 @@
 
                 document.getElementById('widget-sample-server').innerHTML = '';
 
-                let sampleCard = new SteamServer('#widget-sample-server', {
+                let sampleWidget = new SteamServer('#widget-sample-server', {
                     addr: addr,
                     header: header,
                     playtext: playtext,
@@ -625,7 +634,7 @@
 
                 document.getElementById('widget-sample-user').innerHTML = '';
 
-                let sampleCard = new SteamUser('#widget-sample-user', {
+                let sampleWidget = new SteamUser('#widget-sample-user', {
                     steamid: steamid,
                     header: header,
                     online_yes: online,
