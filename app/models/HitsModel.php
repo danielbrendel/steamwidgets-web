@@ -11,6 +11,7 @@ class HitsModel extends \Asatru\Database\Model
     const HITTYPE_MODULE_SERVER = 'mod_server';
     const HITTYPE_MODULE_USER = 'mod_user';
     const HITTYPE_MODULE_WORKSHOP = 'mod_workshop';
+    const HITTYPE_MODULE_GROUP = 'mod_group';
 
     /**
      * Validate hit type
@@ -22,7 +23,7 @@ class HitsModel extends \Asatru\Database\Model
     public static function validateHitType($type)
     {
         try {
-            $types = [self::HITTYPE_MODULE_APP, self::HITTYPE_MODULE_SERVER, self::HITTYPE_MODULE_USER, self::HITTYPE_MODULE_WORKSHOP];
+            $types = [self::HITTYPE_MODULE_APP, self::HITTYPE_MODULE_SERVER, self::HITTYPE_MODULE_USER, self::HITTYPE_MODULE_WORKSHOP, self::HITTYPE_MODULE_GROUP];
 
             if (!in_array($type, $types)) {
                 throw new Exception('Invalid hit type: ' . $type);

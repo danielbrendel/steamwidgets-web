@@ -104,6 +104,28 @@ class ApiController extends BaseController {
     }
 
     /**
+     * Query Steam group data
+     * 
+     * @param Asatru\Controller\ControllerArg $request
+     * @return Asatru\View\JsonHandler
+     */
+    public function queryGroupInfo($request)
+    {
+        try {
+            $group = $request->params()->query('group', null);
+
+            $data = SteamGroup::querySteamData($group);
+
+            //Save hit
+		    HitsModel::addHit(HitsModel::HITTYPE_MODULE_GROUP);
+
+            return json(array('code' => 200, 'group' => $group, 'data' => $data));
+        } catch (\Exception $e) {
+            return json(array('code' => 500, 'msg' => $e->getMessage()));
+        }
+    }
+
+    /**
      * Query JavaScript or CSS resource for component
      * 
      * @param Asatru\Controller\ControllerArg $request

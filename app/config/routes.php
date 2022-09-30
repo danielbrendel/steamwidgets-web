@@ -21,6 +21,7 @@ return [
     array('/api/query/server', 'GET', 'api@queryServerInfo'),
     array('/api/query/user', 'GET', 'api@queryUserInfo'),
     array('/api/query/workshop', 'GET', 'api@queryWorkshopInfo'),
+    array('/api/query/group', 'GET', 'api@queryGroupInfo'),
     array('/api/resource/query', 'GET', 'api@queryResource'),
     array('/stats/{pw}', 'GET', 'stats@index'),
     array('/stats/query/{pw}', 'ANY', 'stats@query'),
