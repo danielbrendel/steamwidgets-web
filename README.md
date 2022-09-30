@@ -13,7 +13,8 @@ SteamWidgets offers the possibility to comfortably render Steam related widgets 
 document with as little effort as possible. 
 
 ## Current featured widgets
-- Steam App Widget: Renders widgets of a Steam app/game
-- Steam Server Widget: Renders widgets of a Steam game server
-- Steam User Widget: Renders widgets of a Steam user
-- Steam Workshop Widget: Renders widgets of a Steam workshop item
+- Steam App Widget: Renders widgets of Steam apps/games
+- Steam Server Widget: Renders widgets of Steam game servers
+- Steam User Widget: Renders widgets of Steam users
+- Steam Workshop Widget: Renders widgets of Steam workshop items
+- Steam Group Widget: Renders widgets of Steam groups 
