@@ -340,12 +340,12 @@ class SteamWorkshop
 
     changeLang(views, subscriptions, favorites, author, viewtext)
     {
-    this.elem.changeLang(views, subscriptions, favorites, author, viewtext);
+        this.elem.changeLang(views, subscriptions, favorites, author, viewtext);
     }
 
     setImageVisibility(visibility)
     {
-    this.elem.setImageVisibility(visibility);
+        this.elem.setImageVisibility(visibility);
     }
 
     remove()

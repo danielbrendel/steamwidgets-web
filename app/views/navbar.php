@@ -13,10 +13,6 @@
 
     <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
-            <a class="navbar-item" href="{{ url('/#about') }}" onclick="document.getElementById('burger-button').click(); return true;">
-                About
-            </a>
-
             <a class="navbar-item" href="{{ url('/#steam-app') }}" onclick="document.getElementById('burger-button').click(); return true;">
                 Steam App
             </a>
@@ -31,6 +27,10 @@
 
             <a class="navbar-item" href="{{ url('/#steam-workshop') }}" onclick="document.getElementById('burger-button').click(); return true;">
                 Steam Workshop
+            </a>
+
+            <a class="navbar-item" href="{{ url('/#steam-group') }}" onclick="document.getElementById('burger-button').click(); return true;">
+                Steam Group
             </a>
         </div>
 

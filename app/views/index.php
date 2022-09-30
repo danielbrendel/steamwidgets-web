@@ -27,6 +27,7 @@
 			<li><a href="#steam-server">Steam Server Widget</a></li>
 			<li><a href="#steam-user">Steam User Widget</a></li>
 			<li><a href="#steam-workshop">Steam Workshop Widget</a></li>
+			<li><a href="#steam-group">Steam Group Widget</a></li>
 		</ul>
 	</p>
 
@@ -42,7 +43,7 @@
 		<br/>
 
 		<i>STEAM_WIDGETS_MODULE</i> can either be <b>app</b> for the Steam App widget, <b>server</b> for the Steam Server widget, 
-		<b>user</b> for the Steam User widget or <b>workshop</b> for the Steam Workshop widget.
+		<b>user</b> for the Steam User widget, <b>workshop</b> for the Steam Workshop widget or <b>group</b> for the Steam Group widget.
 	</p>
 
 	@if (env('APP_SHOWNPMUSAGE', false))
@@ -701,6 +702,163 @@ document.addEventListener('DOMContentLoaded', function() {
 
 				<tr>
 					<td>changeLang(views, subscriptions, favorites, author, viewtext)</td>
+					<td>Changes the language of the widget using the given information</td>
+				</tr>
+
+				<tr class="tr-colored">
+					<td>setImageVisibility(visibility)</td>
+					<td>Sets the widget image visibility</td>
+				</tr>
+
+				<tr>
+					<td>remove()</td>
+					<td>Removes the widget from the document</td>
+				</tr>
+			</tbody>
+		</table>
+	</p>
+</div>
+
+<div class="content-section">
+	<a name="steam-group"></a><br/><br/>
+
+	<h3>Steam Group</h3>
+
+	<p>
+		When referenced the required Steam Group module, the minimum code to render a widget is as follows:<br/>
+		<pre>
+			<code class="language-html">
+&lt;steam-group group="{{ env('APP_EXAMPLE_GROUP') }}"&gt;&lt;/steam-group&gt;
+			</code>
+		</pre>
+
+		<br/><br/>
+		This renders the following widget:<br/>
+		<steam-group group="{{ env('APP_EXAMPLE_GROUP') }}"></steam-group>
+	</p>
+
+	<p>
+		<br/>You can define these options:<br/>
+
+		<table>
+			<thead>
+				<tr></tr>
+				<tr></tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><strong>Attribute</strong></td>
+					<td><strong>Value</strong></td>
+				</tr>
+
+				<tr class="tr-colored">
+					<td>group</td>
+					<td>Specifies the group either by numeric ID or URL identifier token</td>
+				</tr>
+
+				<tr>
+					<td>members</td>
+					<td>Specifies the text of the members stats label</td>
+				</tr>
+
+				<tr class="tr-colored">
+					<td>online</td>
+					<td>Specifies the text of the online stats label</td>
+				</tr>
+
+				<tr>
+					<td>ingame</td>
+					<td>Specifies the text of the in-game stats label</td>
+				</tr>
+
+				<tr class="tr-colored">
+					<td>viewtext</td>
+					<td>Specifies the text of the button which can be used to go to the group page</td>
+				</tr>
+
+				<tr>
+					<td>show-image / showImage</td>
+					<td>Specifies if the group avatar image shall be displayed. Defaults to true/1</td>
+				</tr>
+
+				<tr class="tr-colored">
+					<td>style-border / style.border</td>
+					<td>Specify border rounding: Either none, small or max</td>
+				</tr>
+
+				<tr>
+					<td>style-shadow / style.shadow</td>
+					<td>You can specify false to prevent displaying box shadow or true to enable (default)</td>
+				</tr>
+
+				<tr class="tr-colored">
+					<td>style-color-background / style.colorBackground</td>
+					<td>Specify a CSS value for the background color</td>
+				</tr>
+
+				<tr>
+					<td>style-color-title / style.colorTitle</td>
+					<td>Specify a CSS value for the title color</td>
+				</tr>
+
+				<tr class="tr-colored">
+					<td>style-color-description / style.colorDescription</td>
+					<td>Specify a CSS value for the description color</td>
+				</tr>
+
+				<tr>
+					<td>style-color-stats-count / style.colorStatsCount</td>
+					<td>Specify a CSS value for the stats count color</td>
+				</tr>
+
+				<tr class="tr-colored">
+					<td>style-color-stats-label / style.colorStatsLabel</td>
+					<td>Specify a CSS value for the stats label color</td>
+				</tr>
+			</tbody>
+		</table>
+	</p>
+
+	<p>
+		You can also dynamically create Steam Group widgets via JavaScript:<br/>
+
+		<pre>
+			<code class="language-html">
+&lt;div id="group-widget"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+document.addEventListener('DOMContentLoaded', function() {
+    let widget = new SteamGroup('#group-widget', {
+        group: '{{ env('APP_EXAMPLE_GROUP') }}',
+        //You can specify the same attributes as shown in the table above
+    });
+});
+&lt;/script&gt;
+			</code>
+		</pre>
+	</p>
+
+	<p>
+		<br/>The following methods are available for a Steam Group element / object:<br/>
+
+		<table>
+			<thead>
+				<tr></tr>
+				<tr></tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><strong>Method</strong></td>
+					<td><strong>Description</strong></td>
+				</tr>
+
+				<tr class="tr-colored">
+					<td>updateWidget()</td>
+					<td>Updates the widget data and displays them</td>
+				</tr>
+
+				<tr>
+					<td>changeLang(online, ingame, members, viewtext)</td>
 					<td>Changes the language of the widget using the given information</td>
 				</tr>
 

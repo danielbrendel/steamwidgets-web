@@ -283,7 +283,7 @@ class SteamWorkshop
         var favorites = (typeof config.favorites !== 'undefined') ? config.favorites : 'Favorites';
         var author = (typeof config.author !== 'undefined') ? config.author : 'By :creator';
         var viewtext = (typeof config.viewtext !== 'undefined') ? config.viewtext : 'View item';
-        var showImage = (typeof config.showImage !== 'undefined') ? config.showImage : null;
+        var showImage = (typeof config.showImage !== 'undefined') ? config.showImage : true;
 
         if (typeof showImage === 'boolean') {
             showImage = (showImage) ? 1 : 0;
@@ -340,12 +340,12 @@ class SteamWorkshop
 
     changeLang(views, subscriptions, favorites, author, viewtext)
     {
-    this.elem.changeLang(views, subscriptions, favorites, author, viewtext);
+        this.elem.changeLang(views, subscriptions, favorites, author, viewtext);
     }
 
     setImageVisibility(visibility)
     {
-    this.elem.setImageVisibility(visibility);
+        this.elem.setImageVisibility(visibility);
     }
 
     remove()

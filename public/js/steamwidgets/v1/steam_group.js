@@ -16,6 +16,7 @@ const STEAMWIDGETS_GROUP_VERSION = 'v1';
  */
 class SteamGroupElem extends HTMLElement
 {
+    HEADLINE_MAX_LEN = 30;
     DESCRIPTION_MAX_LEN = 40;
 
     storedData = {};
@@ -116,6 +117,11 @@ class SteamGroupElem extends HTMLElement
                     groupBaseStyle += 'background-color: ' + styleColorBackground + ';';
                 }
 
+                let headline = json.data.groupHeadline;
+                if (headline.length >= self.HEADLINE_MAX_LEN) {
+                    headline = headline.substr(0, self.HEADLINE_MAX_LEN - 3) + '...';
+                }
+
                 let description = json.data.groupSummary;
                 if (description.length >= self.DESCRIPTION_MAX_LEN) {
                     description = description.substr(0, self.DESCRIPTION_MAX_LEN - 3) + '...';
@@ -126,7 +132,7 @@ class SteamGroupElem extends HTMLElement
                     <div class="steam-group-preview ` + ((borderCodeGroupPreview.length > 0) ? borderCodeGroupPreview : '') + `" style="background-image: url('` + json.data.groupAvatar + `'); ` + ((!showImage) ? 'display: none;' : '') + `"></div>
                 
                     <div class="steam-group-info" ` + ((!showImage) ? 'style="top: 13px; width: 100%;"' : '') + `>
-                        <div class="steam-group-info-title" ` + ((styleColorTitle !== null) ? 'style="color: ' + styleColorTitle + ';"' : '') + `>` + json.data.groupHeadline + `</div>
+                        <div class="steam-group-info-title" ` + ((styleColorTitle !== null) ? 'style="color: ' + styleColorTitle + ';"' : '') + `>` + headline + `</div>
                 
                         <div class="steam-group-info-description" ` + ((styleColorDescription !== null) ? 'style="color: ' + styleColorDescription + ';"' : '') +  `>` + description + `</div>
                 
@@ -271,7 +277,7 @@ class SteamGroup
         var online = (typeof config.online !== 'undefined') ? config.online : 'Online';
         var ingame = (typeof config.ingame !== 'undefined') ? config.ingame : 'In-Game';
         var viewtext = (typeof config.viewtext !== 'undefined') ? config.viewtext : 'View group';
-        var showImage = (typeof config.showImage !== 'undefined') ? config.showImage : null;
+        var showImage = (typeof config.showImage !== 'undefined') ? config.showImage : true;
 
         if (typeof showImage === 'boolean') {
             showImage = (showImage) ? 1 : 0;
@@ -327,12 +333,12 @@ class SteamGroup
 
     changeLang(online, ingame, members, viewtext)
     {
-    this.elem.changeLang(online, ingame, members, viewtext);
+        this.elem.changeLang(online, ingame, members, viewtext);
     }
 
     setImageVisibility(visibility)
     {
-    this.elem.setImageVisibility(visibility);
+        this.elem.setImageVisibility(visibility);
     }
 
     remove()
