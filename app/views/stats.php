@@ -18,6 +18,7 @@
         <div>Server count: <div class="is-inline-block" id="count-server"></div></div>
         <div>User count: <div class="is-inline-block" id="count-user"></div></div>
         <div>Workshop count: <div class="is-inline-block" id="count-workshop"></div></div>
+        <div>Group count: <div class="is-inline-block" id="count-group"></div></div>
     </div>
 
     <div>

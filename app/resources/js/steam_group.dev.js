@@ -16,7 +16,7 @@ const STEAMWIDGETS_GROUP_VERSION = 'v1';
  */
 class SteamGroupElem extends HTMLElement
 {
-    HEADLINE_MAX_LEN = 30;
+    HEADLINE_MAX_LEN = 32;
     DESCRIPTION_MAX_LEN = 40;
 
     storedData = {};
