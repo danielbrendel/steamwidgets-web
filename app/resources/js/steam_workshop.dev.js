@@ -121,7 +121,7 @@ class SteamWorkshopElem extends HTMLElement
 
                 let description = json.data.description;
                 if (description.length >= self.DESCRIPTION_MAX_LEN) {
-                description = description.substr(0, self.DESCRIPTION_MAX_LEN - 3) + '...';
+                    description = description.substr(0, self.DESCRIPTION_MAX_LEN - 3) + '...';
                 }
 
                 author = author.replace(':creator', json.data.creator_data.personaname);
@@ -264,7 +264,7 @@ window.customElements.define('steam-workshop', SteamWorkshopElem);
 /**
  * Class SteamWorkshop
  * 
- * Dynamically create a Steam workshop widgets via JavaScript
+ * Dynamically create a Steam workshop widget via JavaScript
  */
 class SteamWorkshop
 {
@@ -283,7 +283,7 @@ class SteamWorkshop
         var favorites = (typeof config.favorites !== 'undefined') ? config.favorites : 'Favorites';
         var author = (typeof config.author !== 'undefined') ? config.author : 'By :creator';
         var viewtext = (typeof config.viewtext !== 'undefined') ? config.viewtext : 'View item';
-        var showImage = (typeof config.showImage !== 'undefined') ? config.showImage : null;
+        var showImage = (typeof config.showImage !== 'undefined') ? config.showImage : true;
 
         if (typeof showImage === 'boolean') {
             showImage = (showImage) ? 1 : 0;

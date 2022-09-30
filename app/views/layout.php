@@ -23,6 +23,7 @@
         <script src="{{ url('/api/resource/query') }}?type=js&module=server&version=v1"></script>
         <script src="{{ url('/api/resource/query') }}?type=js&module=user&version=v1"></script>
         <script src="{{ url('/api/resource/query') }}?type=js&module=workshop&version=v1"></script>
+        <script src="{{ url('/api/resource/query') }}?type=js&module=group&version=v1"></script>
     </head>
 
     <body>

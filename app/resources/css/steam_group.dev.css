@@ -1,0 +1,150 @@
+.steam-group {
+    position: relative;
+    min-width: 360px;
+    max-width: 555px;
+    height: 205px;
+    background-color: rgb(22, 32, 45);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 25px;
+}
+
+.steam-group-preview {
+    position: relative;
+    display: inline-block;
+    min-width: 205px;
+    height: 205px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+.steam-group-preview-small {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.steam-group-preview-none {
+    border-top-left-radius: unset;
+    border-bottom-left-radius: unset;
+}
+
+.steam-group-info {
+    position: relative;
+    display: inline-block;
+    width: 55%;
+    margin-left: 20px;
+    top: -20px;
+}
+
+.steam-group-info-title {
+    margin-bottom: 10px;
+    color: rgb(220, 220, 220);
+    font-size: 1.1em;
+    font-family: Verdana, Arial, sans-serif;
+}
+
+.steam-group-info-description {
+    margin-bottom: 10px;
+    color: rgb(150, 150, 150);
+    font-size: 0.8em;
+    font-family: Verdana, Arial, sans-serif;
+}
+
+.steam-group-info-stats {
+    margin-bottom: 12px;
+}
+
+.steam-group-info-stats-item {
+}
+
+.steam-group-info-stats-item-count {
+    display: inline-block;
+    min-width: 50px;
+    color: rgb(59, 135, 185);
+}
+
+.steam-group-info-stats-item-label {
+    display: inline-block;
+    text-transform: uppercase;
+    color: rgb(100, 100, 100);
+}
+
+.steam-group-info-footer {
+}
+
+.steam-group-info-footer-author {
+    display: inline-block;
+    width: 69%;
+}
+
+.steam-group-info-footer-author a {
+    color: rgb(50, 115, 220);
+}
+
+.steam-group-info-footer-author a:hover {
+    color: rgb(50, 115, 220);
+    text-decoration: underline;
+}
+
+.steam-group-info-footer-action {
+    display: inline-block;
+}
+
+.steam-group-info-footer-action a {
+    color: #D2E885;
+    background: linear-gradient(to bottom, #a4d007 5%, #536904 95%);
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-decoration: none;
+    font-size: 0.9em;
+    font-family: 'Motiva Sans', sans-serif;
+}
+
+.steam-group-info-footer-action a:hover {
+    color: rgb(250, 250, 250);
+}
+
+@media screen and (max-width: 465px) {
+    .steam-group {
+        min-width: unset;
+        width: 350px;
+        min-height: 205px;
+        height: unset;
+    }
+
+    .steam-group-preview {
+        min-width: unset;
+        width: 350px;
+        height: 350px;
+        border-top-right-radius: 25px;
+        border-bottom-left-radius: unset;
+    }
+
+    .steam-group-preview-small {
+        border-top-right-radius: 4px;
+        border-bottom-left-radius: unset;
+    }
+
+    .steam-group-preview-none {
+        border-top-right-radius: unset;
+        border-bottom-left-radius: unset;
+    }
+
+    .steam-group-info {
+        width: 100%;
+        height: 195px;
+        top: unset;
+    }
+
+    .steam-group-info-title {
+        margin-top: 5px;
+    }
+
+    .steam-group-info-footer-author {
+        width: 64%;
+    }
+}

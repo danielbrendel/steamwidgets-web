@@ -1,20 +1,20 @@
 /**
  * SteamWidgets - Steam Widgets for your website
  * 
- * Module: Steam Workshop Widget
+ * Module: Steam Group Widget
  * 
  * Visit: https://github.com/danielbrendel
  */
 
-const STEAMWIDGETS_WORKSHOP_ENDPOINT = 'http://localhost:8000';
-const STEAMWIDGETS_WORKSHOP_VERSION = 'v1';
+const STEAMWIDGETS_GROUP_ENDPOINT = 'http://localhost:8000';
+const STEAMWIDGETS_GROUP_VERSION = 'v1';
  
 /**
- * Class SteamWorkshopElem
+ * Class SteamGroupElem
  * 
- * Handle custom HTML element to render Steam workshop widgets
+ * Handle custom HTML element to render Steam group widgets
  */
-class SteamWorkshopElem extends HTMLElement
+class SteamGroupElem extends HTMLElement
 {
     DESCRIPTION_MAX_LEN = 40;
 
@@ -23,12 +23,11 @@ class SteamWorkshopElem extends HTMLElement
  
     connectedCallback()
     {
-        var itemid = (typeof this.attributes.itemid !== 'undefined') ? this.attributes.itemid.value : null;
-        var views = (typeof this.attributes.views !== 'undefined') ? this.attributes.views.value : 'Views';
-        var subscriptions = (typeof this.attributes.subscriptions !== 'undefined') ? this.attributes.subscriptions.value : 'Subscriptions';
-        var favorites = (typeof this.attributes.favorites !== 'undefined') ? this.attributes.favorites.value : 'Favorites';
-        var author = (typeof this.attributes.author !== 'undefined') ? this.attributes.author.value : 'By :creator';
-        var viewtext = (typeof this.attributes.viewtext !== 'undefined') ? this.attributes.viewtext.value : 'View item';
+        var group = (typeof this.attributes.group !== 'undefined') ? this.attributes.group.value : null;
+        var online = (typeof this.attributes.online !== 'undefined') ? this.attributes.online.value : 'Online';
+        var ingame = (typeof this.attributes.ingame !== 'undefined') ? this.attributes.ingame.value : 'In-Game';
+        var members = (typeof this.attributes.members !== 'undefined') ? this.attributes.members.value : 'Members';
+        var viewtext = (typeof this.attributes.viewtext !== 'undefined') ? this.attributes.viewtext.value : 'View group';
         var showImage = (typeof this.attributes['show-image'] !== 'undefined') ? parseInt(this.attributes['show-image'].value) : 1;
         var styleBorder = (typeof this.attributes['style-border'] !== 'undefined') ? this.attributes['style-border'].value : null;
         var styleShadow = (typeof this.attributes['style-shadow'] !== 'undefined') ? parseInt(this.attributes['style-shadow'].value) : 1;
@@ -38,13 +37,12 @@ class SteamWorkshopElem extends HTMLElement
         var styleColorStatsCount = (typeof this.attributes['style-color-stats-count'] !== 'undefined') ? this.attributes['style-color-stats-count'].value : null;
         var styleColorStatsLabel = (typeof this.attributes['style-color-stats-label'] !== 'undefined') ? this.attributes['style-color-stats-label'].value : null;
         
-        if (itemid !== null) {
+        if (group !== null) {
             this.storedData = {
-                itemid: itemid,
-                views: views,
-                subscriptions: subscriptions,
-                favorites: favorites,
-                author: author,
+                group: group,
+                online: online,
+                ingame: ingame,
+                members: members,
                 viewtext: viewtext,
                 showImage: showImage,
                 styleBorder: styleBorder,
@@ -57,11 +55,10 @@ class SteamWorkshopElem extends HTMLElement
             };
 
             this.setupWidget(
-                itemid,
-                views,
-                subscriptions,
-                favorites,
-                author,
+                group,
+                online,
+                ingame,
+                members,
                 viewtext,
                 showImage,
                 styleBorder,
@@ -75,7 +72,7 @@ class SteamWorkshopElem extends HTMLElement
         }
     }
  
-    setupWidget(itemid, views, subscriptions, favorites, author, viewtext, showImage, styleBorder, styleShadow, styleColorBackground, styleColorTitle, styleColorDescription, styleColorStatsCount, styleColorStatsLabel)
+    setupWidget(group, online, ingame, members, viewtext, showImage, styleBorder, styleShadow, styleColorBackground, styleColorTitle, styleColorDescription, styleColorStatsCount, styleColorStatsLabel)
     {
         var req = new XMLHttpRequest();
         var self = this;
@@ -84,79 +81,75 @@ class SteamWorkshopElem extends HTMLElement
             if (req.readyState == XMLHttpRequest.DONE) {
                 let json = JSON.parse(req.responseText);
 
-                if (!document.getElementById('steamwidgets-workshop-styles')) {
+                if (!document.getElementById('steamwidgets-group-styles')) {
                     let link = document.createElement('link');
-                    link.id = 'steamwidgets-workshop-styles';
+                    link.id = 'steamwidgets-group-styles';
                     link.rel = 'stylesheet';
                     link.type = 'text/css';
-                    link.href = STEAMWIDGETS_WORKSHOP_ENDPOINT + '/api/resource/query?type=css&module=workshop&version=' + STEAMWIDGETS_WORKSHOP_VERSION;
+                    link.href = STEAMWIDGETS_GROUP_ENDPOINT + '/api/resource/query?type=css&module=group&version=' + STEAMWIDGETS_GROUP_VERSION;
                     document.getElementsByTagName('head')[0].appendChild(link);
                 }
 
-                let borderCodeWorkshop = '';
-                let borderCodeWorkshopPreview = '';
+                let borderCodeGroup = '';
+                let borderCodeGroupPreview = '';
                 if (styleBorder !== null) {
                     if (styleBorder === 'max') {
-                        borderCodeWorkshop = '';
-                        borderCodeWorkshopPreview = '';
+                        borderCodeGroup = '';
+                        borderCodeGroupPreview = '';
                     } else if (styleBorder === 'small') {
-                        borderCodeWorkshop = 'border-radius: 4px;';
-                        borderCodeWorkshopPreview = 'steam-workshop-preview-small';
+                        borderCodeGroup = 'border-radius: 4px;';
+                        borderCodeGroupPreview = 'steam-group-preview-small';
                     } else if (styleBorder === 'none') {
-                        borderCodeWorkshop = 'border-radius: unset;';
-                        borderCodeWorkshopPreview = 'steam-workshop-preview-none';
+                        borderCodeGroup = 'border-radius: unset;';
+                        borderCodeGroupPreview = 'steam-group-preview-none';
                     }
                 }
 
-                let workshopBaseStyle = '';
+                let groupBaseStyle = '';
                 if (!styleShadow) {
-                    workshopBaseStyle += 'box-shadow: unset;';
+                    groupBaseStyle += 'box-shadow: unset;';
                 }
-                if (borderCodeWorkshop.length > 0) {
-                    workshopBaseStyle += borderCodeWorkshop;
+                if (borderCodeGroup.length > 0) {
+                    groupBaseStyle += borderCodeGroup;
                 }
                 if (styleColorBackground !== null) {
-                    workshopBaseStyle += 'background-color: ' + styleColorBackground + ';';
+                    groupBaseStyle += 'background-color: ' + styleColorBackground + ';';
                 }
 
-                let description = json.data.description;
+                let description = json.data.groupSummary;
                 if (description.length >= self.DESCRIPTION_MAX_LEN) {
                     description = description.substr(0, self.DESCRIPTION_MAX_LEN - 3) + '...';
                 }
 
-                author = author.replace(':creator', json.data.creator_data.personaname);
-                
                 let html = `
-                <div class="steam-workshop" ` + ((workshopBaseStyle.length > 0) ? 'style="' + workshopBaseStyle + '"' : '') + `>
-                    <div class="steam-workshop-preview ` + ((borderCodeWorkshopPreview.length > 0) ? borderCodeWorkshopPreview : '') + `" style="background-image: url('` + json.data.preview_url + `'); ` + ((!showImage) ? 'display: none;' : '') + `"></div>
+                <div class="steam-group" ` + ((groupBaseStyle.length > 0) ? 'style="' + groupBaseStyle + '"' : '') + `>
+                    <div class="steam-group-preview ` + ((borderCodeGroupPreview.length > 0) ? borderCodeGroupPreview : '') + `" style="background-image: url('` + json.data.groupAvatar + `'); ` + ((!showImage) ? 'display: none;' : '') + `"></div>
                 
-                    <div class="steam-workshop-info" ` + ((!showImage) ? 'style="top: 13px; width: 100%;"' : '') + `>
-                        <div class="steam-workshop-info-title" ` + ((styleColorTitle !== null) ? 'style="color: ' + styleColorTitle + ';"' : '') + `>` + json.data.title + `</div>
+                    <div class="steam-group-info" ` + ((!showImage) ? 'style="top: 13px; width: 100%;"' : '') + `>
+                        <div class="steam-group-info-title" ` + ((styleColorTitle !== null) ? 'style="color: ' + styleColorTitle + ';"' : '') + `>` + json.data.groupHeadline + `</div>
                 
-                        <div class="steam-workshop-info-description" ` + ((styleColorDescription !== null) ? 'style="color: ' + styleColorDescription + ';"' : '') +  `>` + description + `</div>
+                        <div class="steam-group-info-description" ` + ((styleColorDescription !== null) ? 'style="color: ' + styleColorDescription + ';"' : '') +  `>` + description + `</div>
                 
-                        <div class="steam-workshop-info-stats">
-                            <div class="steam-workshop-info-stats-item">
-                                <div class="steam-workshop-info-stats-item-count" ` + ((styleColorStatsCount !== null) ? 'style="color: ' + styleColorStatsCount + ';"' : '') +  `>` + self.readableCount(json.data.views) + `</div>
-                                <div class="steam-workshop-info-stats-item-label" ` + ((styleColorStatsLabel !== null) ? 'style="color: ' + styleColorStatsLabel + ';"' : '') +  `>` + views + `</div>
+                        <div class="steam-group-info-stats">
+                            <div class="steam-group-info-stats-item">
+                                <div class="steam-group-info-stats-item-count" ` + ((styleColorStatsCount !== null) ? 'style="color: ' + styleColorStatsCount + ';"' : '') +  `>` + self.readableCount(json.data.members.count) + `</div>
+                                <div class="steam-group-info-stats-item-label" ` + ((styleColorStatsLabel !== null) ? 'style="color: ' + styleColorStatsLabel + ';"' : '') +  `>` + members + `</div>
                             </div>
                 
-                            <div class="steam-workshop-info-stats-item">
-                                <div class="steam-workshop-info-stats-item-count" ` + ((styleColorStatsCount !== null) ? 'style="color: ' + styleColorStatsCount + ';"' : '') +  `>` + self.readableCount(json.data.subscriptions) + `</div>
-                                <div class="steam-workshop-info-stats-item-label" ` + ((styleColorStatsLabel !== null) ? 'style="color: ' + styleColorStatsLabel + ';"' : '') +  `>`+ subscriptions + `</div>
+                            <div class="steam-group-info-stats-item">
+                                <div class="steam-group-info-stats-item-count" ` + ((styleColorStatsCount !== null) ? 'style="color: ' + styleColorStatsCount + ';"' : '') +  `>` + self.readableCount(json.data.members.online) + `</div>
+                                <div class="steam-group-info-stats-item-label" ` + ((styleColorStatsLabel !== null) ? 'style="color: ' + styleColorStatsLabel + ';"' : '') +  `>`+ online + `</div>
                             </div>
                 
-                            <div class="steam-workshop-info-stats-item">
-                                <div class="steam-workshop-info-stats-item-count" ` + ((styleColorStatsCount !== null) ? 'style="color: ' + styleColorStatsCount + ';"' : '') +  `>` + self.readableCount(json.data.favorited) + `</div>
-                                <div class="steam-workshop-info-stats-item-label" ` + ((styleColorStatsLabel !== null) ? 'style="color: ' + styleColorStatsLabel + ';"' : '') +  `>`+ favorites + `</div>
+                            <div class="steam-group-info-stats-item">
+                                <div class="steam-group-info-stats-item-count" ` + ((styleColorStatsCount !== null) ? 'style="color: ' + styleColorStatsCount + ';"' : '') +  `>` + self.readableCount(json.data.members.in_game) + `</div>
+                                <div class="steam-group-info-stats-item-label" ` + ((styleColorStatsLabel !== null) ? 'style="color: ' + styleColorStatsLabel + ';"' : '') +  `>`+ ingame + `</div>
                             </div>
                         </div>
                 
-                        <div class="steam-workshop-info-footer">
-                            <div class="steam-workshop-info-footer-author"><a href="` + json.data.creator_data.profileurl + `">` + author + `</a></div>
-                
-                            <div class="steam-workshop-info-footer-action">
-                                <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=` + json.data.publishedfileid + `">` + viewtext + `</a>
+                        <div class="steam-group-info-footer">
+                            <div class="steam-group-info-footer-action">
+                                <a href="https://steamcommunity.com/groups/` + json.data.groupURL + `">` + viewtext + `</a>
                             </div>
                         </div>
                     </div>
@@ -166,18 +159,17 @@ class SteamWorkshopElem extends HTMLElement
                 self.innerHTML = html;
             }
         };
-        req.open('GET', STEAMWIDGETS_WORKSHOP_ENDPOINT + '/api/query/workshop?itemid=' + itemid, true);
+        req.open('GET', STEAMWIDGETS_GROUP_ENDPOINT + '/api/query/group?group=' + group, true);
         req.send();
     }
  
     updateWidget()
     {
         this.setupWidget(
-            this.storedData.itemid,
-            this.storedData.views,
-            this.storedData.subscriptions,
-            this.storedData.favorites,
-            this.storedData.author,
+            this.storedData.group,
+            this.storedData.online,
+            this.storedData.ingame,
+            this.storedData.members,
             this.storedData.viewtext,
             this.storedData.showImage,
             this.storedData.styleBorder,
@@ -190,20 +182,18 @@ class SteamWorkshopElem extends HTMLElement
         );
     }
 
-    changeLang(views, subscriptions, favorites, author, viewtext)
+    changeLang(online, ingame, members, viewtext)
     {
-        this.storedData.views = views;
-        this.storedData.subscriptions = subscriptions;
-        this.storedData.favorites = favorites;
-        this.storedData.author = author;
+        this.storedData.online = online;
+        this.storedData.ingame = ingame;
+        this.storedData.members = members;
         this.storedData.viewtext = viewtext;
 
         this.setupWidget(
-            this.storedData.itemid,
-            this.storedData.views,
-            this.storedData.subscriptions,
-            this.storedData.favorites,
-            this.storedData.author,
+            this.storedData.group,
+            this.storedData.online,
+            this.storedData.ingame,
+            this.storedData.members,
             this.storedData.viewtext,
             this.storedData.showImage,
             this.storedData.styleBorder,
@@ -221,11 +211,10 @@ class SteamWorkshopElem extends HTMLElement
         this.storedData.showImage = visibility;
         
         this.setupWidget(
-            this.storedData.itemid,
-            this.storedData.views,
-            this.storedData.subscriptions,
-            this.storedData.favorites,
-            this.storedData.author,
+            this.storedData.group,
+            this.storedData.online,
+            this.storedData.ingame,
+            this.storedData.members,
             this.storedData.viewtext,
             this.storedData.showImage,
             this.storedData.styleBorder,
@@ -259,14 +248,14 @@ class SteamWorkshopElem extends HTMLElement
     }
 }
  
-window.customElements.define('steam-workshop', SteamWorkshopElem);
+window.customElements.define('steam-group', SteamGroupElem);
  
 /**
- * Class SteamWorkshop
+ * Class SteamGroup
  * 
- * Dynamically create a Steam workshop widget via JavaScript
+ * Dynamically create a Steam group widget via JavaScript
  */
-class SteamWorkshop
+class SteamGroup
 {
     elem = null;
     selident = null;
@@ -277,13 +266,12 @@ class SteamWorkshop
         this.selident = selector;
         this.cfg = config;
 
-        var itemid = (typeof config.itemid !== 'undefined') ? config.itemid : null;
-        var views = (typeof config.views !== 'undefined') ? config.views : 'Views';
-        var subscriptions = (typeof config.subscriptions !== 'undefined') ? config.subscriptions : 'Subscriptions';
-        var favorites = (typeof config.favorites !== 'undefined') ? config.favorites : 'Favorites';
-        var author = (typeof config.author !== 'undefined') ? config.author : 'By :creator';
-        var viewtext = (typeof config.viewtext !== 'undefined') ? config.viewtext : 'View item';
-        var showImage = (typeof config.showImage !== 'undefined') ? config.showImage : null;
+        var group = (typeof config.group !== 'undefined') ? config.group : null;
+        var members = (typeof config.members !== 'undefined') ? config.members : 'Members';
+        var online = (typeof config.online !== 'undefined') ? config.online : 'Online';
+        var ingame = (typeof config.ingame !== 'undefined') ? config.ingame : 'In-Game';
+        var viewtext = (typeof config.viewtext !== 'undefined') ? config.viewtext : 'View group';
+        var showImage = (typeof config.showImage !== 'undefined') ? config.showImage : true;
 
         if (typeof showImage === 'boolean') {
             showImage = (showImage) ? 1 : 0;
@@ -311,12 +299,11 @@ class SteamWorkshop
             styleShadow = (styleShadow) ? 1 : 0;
         }
 
-        this.elem = document.createElement('steam-workshop');
-        this.elem.setAttribute('itemid', itemid);
-        this.elem.setAttribute('views', views);
-        this.elem.setAttribute('subscriptions', subscriptions);
-        this.elem.setAttribute('favorites', favorites);
-        this.elem.setAttribute('author', author);
+        this.elem = document.createElement('steam-group');
+        this.elem.setAttribute('group', group);
+        this.elem.setAttribute('online', online);
+        this.elem.setAttribute('members', members);
+        this.elem.setAttribute('ingame', ingame);
         this.elem.setAttribute('viewtext', viewtext);
         this.elem.setAttribute('show-image', showImage);
         this.elem.setAttribute('style-border', styleBorder);
@@ -338,9 +325,9 @@ class SteamWorkshop
         this.elem.updateWidget();
     }
 
-    changeLang(views, subscriptions, favorites, author, viewtext)
+    changeLang(online, ingame, members, viewtext)
     {
-    this.elem.changeLang(views, subscriptions, favorites, author, viewtext);
+    this.elem.changeLang(online, ingame, members, viewtext);
     }
 
     setImageVisibility(visibility)

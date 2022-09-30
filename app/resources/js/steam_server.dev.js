@@ -283,7 +283,7 @@
  /**
   * Class SteamServer
   * 
-  * Dynamically create a Steam server widgets via JavaScript
+  * Dynamically create a Steam server widget via JavaScript
   */
  class SteamServer
  {

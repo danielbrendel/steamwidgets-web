@@ -254,7 +254,7 @@
  /**
   * Class SteamUser
   * 
-  * Dynamically create a Steam user widgets via JavaScript
+  * Dynamically create a Steam user widget via JavaScript
   */
  class SteamUser
  {
