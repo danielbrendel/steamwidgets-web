@@ -35,7 +35,7 @@
 
 		<pre>
 			<code class="language-html">
-&lt;script src="{{ url('/api/resource/query?type=js&module=STEAM_WIDGETS_MODULE&version=v1') }}"&gt;&lt;/script&gt;
+&lt;script src="{{ Utils::url('/api/resource/query?type=js&module=STEAM_WIDGETS_MODULE&version=v1') }}"&gt;&lt;/script&gt;
 			</code>
 		</pre>
 
