@@ -67,6 +67,7 @@ window.vue = new Vue({
                     document.getElementById('count-app').innerHTML = response.counts.mod_app;
                     document.getElementById('count-server').innerHTML = response.counts.mod_server;
                     document.getElementById('count-user').innerHTML = response.counts.mod_user;
+                    document.getElementById('count-workshop').innerHTML = response.counts.mod_workshop;
 
                     let content = document.getElementById(elem);
                     if (content) {
@@ -74,6 +75,7 @@ window.vue = new Vue({
                         let data_app = [];
                         let data_server = [];
                         let data_user = [];
+                        let data_workshop = [];
 
                         let day = 60 * 60 * 24 * 1000;
                         let dt = new Date(Date.parse(start));
@@ -95,6 +97,7 @@ window.vue = new Vue({
                             data_app.push(0);
                             data_server.push(0);
                             data_user.push(0);
+                            data_workshop.push(0);
                         }
 
                         for (const [key, value] of Object.entries(response.data.mod_app)) {
@@ -121,6 +124,14 @@ window.vue = new Vue({
                             });
                         }
 
+                        for (const [key, value] of Object.entries(response.data.mod_workshop)) {
+                            labels.forEach(function(lblElem, lblIndex){
+                                if (lblElem == key) {
+                                    data_workshop[lblIndex] = parseInt(value[0]);
+                                }
+                            });
+                        }
+
                         const config = {
                             type: 'line',
                             data: {
@@ -143,6 +154,12 @@ window.vue = new Vue({
                                         backgroundColor: 'rgb(240, 155, 90)',
                                         borderColor: 'rgb(240, 155, 90)',
                                         data: data_user,
+                                    },
+                                    {
+                                        label: 'Workshop',
+                                        backgroundColor: 'rgb(24, 125, 54)',
+                                        borderColor: 'rgb(24, 125, 54)',
+                                        data: data_workshop,
                                     }
                                 ]
                             },

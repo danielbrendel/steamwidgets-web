@@ -17,6 +17,7 @@
         <div>App count: <div class="is-inline-block" id="count-app"></div></div>
         <div>Server count: <div class="is-inline-block" id="count-server"></div></div>
         <div>User count: <div class="is-inline-block" id="count-user"></div></div>
+        <div>Workshop count: <div class="is-inline-block" id="count-workshop"></div></div>
     </div>
 
     <div>

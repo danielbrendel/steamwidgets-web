@@ -79,6 +79,7 @@ class StatsController extends BaseController
             $data[HitsModel::HITTYPE_MODULE_APP] = [];
             $data[HitsModel::HITTYPE_MODULE_SERVER] = [];
             $data[HitsModel::HITTYPE_MODULE_USER] = [];
+			$data[HitsModel::HITTYPE_MODULE_WORKSHOP] = [];
 
 			$hits = HitsModel::getHitsPerDay($start, $end);
             
@@ -88,6 +89,7 @@ class StatsController extends BaseController
 			$count_total[HitsModel::HITTYPE_MODULE_APP] = 0;
             $count_total[HitsModel::HITTYPE_MODULE_SERVER] = 0;
             $count_total[HitsModel::HITTYPE_MODULE_USER] = 0;
+			$count_total[HitsModel::HITTYPE_MODULE_WORKSHOP] = 0;
 
 			for ($i = 0; $i < $hits->count(); $i++) {
 				$count_total[$hits->get($i)->get('hittype')] += $hits->get($i)->get('count');
@@ -99,7 +101,7 @@ class StatsController extends BaseController
                 'code' => 200,
                 'data' => $data,
 				'counts' => $count_total,
-				'count_total' => $count_total[HitsModel::HITTYPE_MODULE_APP] + $count_total[HitsModel::HITTYPE_MODULE_SERVER] + $count_total[HitsModel::HITTYPE_MODULE_USER],
+				'count_total' => $count_total[HitsModel::HITTYPE_MODULE_APP] + $count_total[HitsModel::HITTYPE_MODULE_SERVER] + $count_total[HitsModel::HITTYPE_MODULE_USER] + $count_total[HitsModel::HITTYPE_MODULE_WORKSHOP],
                 'start' => $start,
 				'end' => $end,
 				'day_diff' => $dayDiff
