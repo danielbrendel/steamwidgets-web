@@ -13,6 +13,37 @@ body {
     background-color: rgb(25, 40, 55);
 }
 
+.navbar {
+    background-color: rgba(255, 255, 255, 0.0);
+}
+
+a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:hover, .navbar-link.is-active {
+    background-color: rgba(255, 255, 255, 0.0) !important;
+    color: rgb(180, 180, 180) !important;
+}
+
+.navbar-item, .navbar-burger, .navbar-link {
+    color: rgb(190, 190, 190);
+}
+
+.navbar-dropdown {
+    background-color: rgb(50, 50, 48);
+}
+
+.navbar-item.has-dropdown:hover .navbar-link, .navbar-item.has-dropdown.is-active .navbar-link {
+    background-color: rgba(0, 0, 0, 0.0);
+}
+
+@media screen and (max-width: 1087px) {
+    .navbar-menu {
+        background-color: rgb(50, 50, 48);
+    }
+}
+
+a.navbar-burger:hover {
+    color: rgb(200, 200, 200);
+}
+
 .navbar-start {
     @media screen and (min-width: 1088px) {
         flex-grow: 1;
@@ -41,6 +72,7 @@ body {
 
 .content-section {
     padding: 20px;
+    color: rgb(150, 150, 150);
 }
 
 .content-centered {
