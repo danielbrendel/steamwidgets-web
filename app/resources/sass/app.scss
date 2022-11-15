@@ -10,6 +10,7 @@ html, body {
 
 body {
     overflow-x: hidden;
+    background-color: rgb(25, 40, 55);
 }
 
 .navbar-start {
@@ -23,6 +24,19 @@ body {
 .is-font-title {
     font-family: 'Helvetica', Verdana, Arial, sans-serif;
     font-size: 20px;
+}
+
+.header {
+    width: 100%;
+    height: 320px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.header-overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .content-section {
@@ -43,21 +57,24 @@ body {
 .content-section h1 {
     font-size: 2.0em;
     margin-bottom: 10px;
+    color: rgb(230, 230, 230);
 }
 
 .content-section h2 {
     font-size: 1.5em;
-    color: rgb(100, 100, 100);
+    color: rgb(200, 200, 200);
 }
 
 .content-section h3 {
     font-size: 1.2em;
     color: rgb(100, 100, 100);
     margin-bottom: 30px;
+    color: rgb(200, 200, 200);
 }
 
 .content-section p {
     margin-bottom: 20px;
+    color: rgb(150, 150, 150);
 }
 
 .content-section a {
@@ -77,7 +94,7 @@ body {
 }
 
 .content-section code {
-    background-color: rgb(230, 230, 230);
+    background-color: rgb(22, 32, 45);
     border-radius: 4px;
 }
 
@@ -101,8 +118,16 @@ body {
     padding: 15px;
 }
 
+tbody {
+    color: rgb(150, 150, 150);
+}
+
+tbody strong {
+    color: rgb(150, 150, 150);
+}
+
 .tr-colored {
-    background-color: rgb(200, 200, 200);
+    background-color: rgb(38, 61, 83);
 }
 
 .content-section hr {
@@ -142,7 +167,7 @@ body {
 .footer {
     width: 100%;
     color: rgb(100, 100, 100);
-    background-color: rgb(235, 235, 235);
+    background-color: rgb(50, 50, 48);
     padding: 1rem 1.5rem 1rem;
 }
 

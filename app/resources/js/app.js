@@ -210,7 +210,7 @@ window.vue = new Vue({
 });
 
 import hljs from 'highlight.js';
-import 'highlight.js/scss/github.scss';
+import 'highlight.js/scss/github-dark.scss';
 
 window.hljs = hljs;
 

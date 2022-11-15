@@ -1,9 +1,3 @@
-<div class="content-section content-centered content-top-margin">
-	<h1>{{ env('APP_NAME') }}</h1>
-
-	<h2>{{ env('APP_DESCRIPTION') }}</h2>
-</div>
-
 <div class="content-section">
 	<a name="about"></a><br/><br/>
 

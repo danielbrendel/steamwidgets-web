@@ -29,6 +29,7 @@
     <body>
         <div id="app">
             @include('navbar.php')
+            @include('header.php')
 
             <div class="container">
                 <div class="columns">

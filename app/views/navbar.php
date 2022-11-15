@@ -1,4 +1,4 @@
-<nav class="navbar is-light is-fixed-top" role="navigation" aria-label="main navigation">
+<nav class="navbar is-dark is-fixed-top" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         <a class="navbar-item navbar-item-brand is-font-title" href="{{ url('/') }}">
             <img src="{{ asset('img/logo.png') }}"/>&nbsp;{{ env('APP_NAME') }}
@@ -36,15 +36,15 @@
 
         <div class="navbar-end">
             <div class="navbar-item">
-                <img src="https://img.shields.io/github/forks/{{ env('APP_PACKAGE') }}?style=social"/>
+                <img src="https://img.shields.io/github/forks/{{ env('APP_PACKAGE') }}?style=flat"/>
             </div>
 
             <div class="navbar-item">
-                <img src="https://img.shields.io/github/stars/{{ env('APP_PACKAGE') }}?style=social"/>
+                <img src="https://img.shields.io/github/stars/{{ env('APP_PACKAGE') }}?style=flat"/>
             </div>
 
             <div class="navbar-item">
-                <img src="https://img.shields.io/npm/dt/{{ env('APP_NPMPACKAGENAME') }}?style=social"/>
+                <img src="https://img.shields.io/npm/dt/{{ env('APP_NPMPACKAGENAME') }}?style=flat"/>
             </div>
         </div>
     </div>
