@@ -99,12 +99,20 @@ class StatsController extends BaseController
 				$data[$hits->get($i)->get('hittype')][$hits->get($i)->get('created_at')][] = $hits->get($i)->get('count');
 			}
 
+			$referrers = HitsModel::getReferrers($start, $end);
+
+			$refar = [];
+			foreach ($referrers as $ref) {
+				$refar[] = $ref->get('referrer');
+			}
+
             return json([
                 'code' => 200,
                 'data' => $data,
 				'counts' => $count_total,
 				'count_total' => $count_total[HitsModel::HITTYPE_MODULE_APP] + $count_total[HitsModel::HITTYPE_MODULE_SERVER] + $count_total[HitsModel::HITTYPE_MODULE_USER] + $count_total[HitsModel::HITTYPE_MODULE_WORKSHOP] + $count_total[HitsModel::HITTYPE_MODULE_GROUP],
-                'start' => $start,
+                'referrers' => $refar,
+				'start' => $start,
 				'end' => $end,
 				'day_diff' => $dayDiff
             ]);

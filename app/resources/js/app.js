@@ -69,6 +69,7 @@ window.vue = new Vue({
                     document.getElementById('count-user').innerHTML = response.counts.mod_user;
                     document.getElementById('count-workshop').innerHTML = response.counts.mod_workshop;
                     document.getElementById('count-group').innerHTML = response.counts.mod_group;
+                    document.getElementById('referrers').innerHTML = '';
 
                     let content = document.getElementById(elem);
                     if (content) {
@@ -200,6 +201,16 @@ window.vue = new Vue({
                             content,
                             config
                         );
+
+                        let refcode = '<ul>';
+                        response.referrers.forEach(function(referrer, index) {
+                            if (referrer.length > 0) {
+                                refcode += '<li>' + referrer + '</li>';
+                            }
+                        });
+                        refcode += '</ul>';
+
+                        document.getElementById('referrers').innerHTML = refcode;
                     }
                 } else {
                     alert(response.msg);

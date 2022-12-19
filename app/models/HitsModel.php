@@ -47,10 +47,12 @@ class HitsModel extends \Asatru\Database\Model
             static::validateHitType($type);
 
             $token = md5($_SERVER['REMOTE_ADDR']);
+            $referrer = (isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '');
 
-            HitsModel::raw('INSERT INTO `' . self::tableName() . '` (hash_token, hittype, created_at) VALUES(?, ?, CURRENT_TIMESTAMP)', [
+            HitsModel::raw('INSERT INTO `' . self::tableName() . '` (hash_token, hittype, referrer, created_at) VALUES(?, ?, ?, CURRENT_TIMESTAMP)', [
                 $token,
-                $type
+                $type,
+                $referrer
             ]);
         } catch (Exception $e) {
             throw $e;
@@ -63,7 +65,7 @@ class HitsModel extends \Asatru\Database\Model
      * @param $start
      * @param $end
      * @return Asatru\Database\Collection
-     * @throws Exception
+     * @throws \Exception
      */
     public static function getHitsPerDay($start, $end)
     {
@@ -74,7 +76,29 @@ class HitsModel extends \Asatru\Database\Model
             ]);
 
             return $result;
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * Get all referrers of a given range
+     * 
+     * @param $start
+     * @param $end
+     * @return Asatru\Database\Collection
+     * @throws \Exception
+     */
+    public static function getReferrers($start, $end)
+    {
+        try {
+            $result = HitsModel::raw('SELECT DISTINCT referrer FROM `' . self::tableName() . '` WHERE DATE(created_at) >= ? AND DATE(created_at) <= ? ORDER BY referrer ASC', [
+                $start,
+                $end
+            ]);
+
+            return $result;
+        } catch (\Exception $e) {
             throw $e;
         }
     }

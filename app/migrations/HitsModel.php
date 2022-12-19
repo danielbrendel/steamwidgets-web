@@ -34,6 +34,7 @@
             $this->database->add('id INT NOT NULL AUTO_INCREMENT PRIMARY KEY');
             $this->database->add('hash_token VARCHAR(512) NOT NULL');
             $this->database->add('hittype VARCHAR(100) NOT NULL');
+            $this->database->add('referrer VARCHAR(512) NOT NULL');
             $this->database->add('created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP');
             $this->database->create();
         }
