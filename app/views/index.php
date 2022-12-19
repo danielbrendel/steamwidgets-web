@@ -44,7 +44,10 @@
 		<p>
 			You can also use NPM to install the package. Please visit the NPM page of the package in order to get instruction details:<br/>
 			<br/>
-			<a href="{{ env('APP_NPMPACKAGEURL') }}">{{ env('APP_NPMPACKAGEURL') }}</a>
+
+			<div class="info-box">
+				<strong>NPM package: </strong><a href="{{ env('APP_NPMPACKAGEURL') }}">{{ env('APP_NPMPACKAGEURL') }}</a>
+			</div>
 		</p>
 	@endif
 

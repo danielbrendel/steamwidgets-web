@@ -166,6 +166,27 @@ tbody strong {
     background-color: rgb(200, 200, 200);
 }
 
+.info-box {
+    position: relative;
+    background-color: rgba(130, 130, 255, 0.4);
+    border: 1px solid rgb(130, 130, 255);
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.info-box strong {
+    color: rgb(200, 200, 200);
+}
+
+.info-box a {
+    color: rgb(123, 220, 255);
+}
+
+.info-box a:hover {
+    color: rgb(123, 220, 255);
+    text-decoration: underline;
+}
+
 .stats-input {
     padding: 8px;
     color: rgb(50, 50, 50);
