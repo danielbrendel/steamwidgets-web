@@ -29,8 +29,9 @@ class SteamApp
 
         $response = curl_exec($handle);
 
-        if(curl_error($handle) !== '') {
-            throw new \Exception('cURL error occured');
+        $curl_error = curl_error($handle);
+        if($curl_error !== '') {
+            throw new \Exception('cURL error occured: ' . $curl_error);
         }
 
         curl_close($handle);
