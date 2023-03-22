@@ -16,7 +16,7 @@
                         </div>
 
                         <div class="header-buttons">
-                            <span><a href="#readmore" class="button is-info is-outlined">Read More</a></span>
+                            <span><a href="#readmore" class="button is-info is-outlined" onclick="document.querySelector('[name=readmore]').scrollIntoView({behavior: 'smooth'}); return false;">Read More</a></span>
                             <span><a href="{{ url('/documentation') }}" class="button is-primary is-outlined">Documentation</a></span>
                         </div>
                     </div>

@@ -18,6 +18,10 @@ body {
     transition: .3s ease-in-out;
 }
 
+.navbar-item-brand img {
+    border-radius: 50%;
+}
+
 .navbar-background-show {
     background-color: rgb(76, 76, 120);
 }
@@ -66,6 +70,9 @@ a.navbar-burger:hover {
     height: 750px;
     @media screen and (max-width: 768px) {
         height: 550px;
+    }
+    @media screen and (max-width: 441px) {
+        height: 685px;
     }
     background-color: rgb(41, 52, 62);
 }
@@ -195,6 +202,27 @@ a.navbar-burger:hover {
 
 .content-section td {
     padding: 15px;
+}
+
+.is-content {
+    color: rgb(200, 200, 200);
+    padding-bottom: 50px;
+}
+
+.is-content pre {
+    padding: unset;
+    margin-top: -15px;
+    margin-bottom: -61px;
+    background-color: unset;
+}
+
+.is-content code {
+    border-radius: 12px;
+    box-shadow: 0 4px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+.is-highlight {
+    font-size: 1.5em;
 }
 
 tbody {
@@ -340,5 +368,90 @@ tbody strong {
 .hide-mobile {
     @media screen and (max-width: 1087px) {
         display: none;
+    }
+}
+
+.fade {
+    transition: opacity 0.65s ease-in;
+}
+
+.fade-in {
+    opacity: 1;
+}
+
+.fade-out {
+    opacity: 0;
+}
+
+.widget-types {
+    text-align: center;
+}
+
+.widget-type {
+    position: relative;
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 15px;
+    padding-top: 59px;
+    padding-bottom: 50px;
+    background-color: rgb(50, 51, 76);
+    border-radius: 12px;
+    border-left: 3px solid rgb(74, 123, 163);
+    box-shadow: 0 4px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.is-centered {
+    text-align: center;
+}
+
+.is-sidepadding {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.padding-top-cdn {
+    padding-top: 48px;
+}
+
+.padding-top-npm {
+    padding-top: 45px;
+}
+
+.button-get-started {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.button-get-started a {
+    display: inline-block;
+    width: 305px;
+    height: 65px;
+    background-color: rgb(50, 115, 220);
+    color: rgb(250, 250, 250);
+    border-radius: 5px;
+    padding-top: 8px;
+    font-size: 2.0em;
+}
+
+.button-get-started a:hover {
+    background-color: rgb(63, 123, 220);
+    color: rgb(250, 250, 250);
+    text-decoration: none;
+}
+
+.is-widescreen {
+    @media screen and (max-width: 769px) {
+        display: none !important;
+    }
+}
+
+.is-smallscreen {
+    @media screen and (min-width: 768px) {
+        display: none !important;
     }
 }

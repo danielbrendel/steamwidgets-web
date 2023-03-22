@@ -229,10 +229,29 @@ document.addEventListener('DOMContentLoaded', function(){
     window.hljs.highlightAll();
 
     window.onscroll = function() {
-        if ((document.body.scrollTop > document.getElementsByClassName('navbar')[0].offsetHeight + 100) || (document.documentElement.scrollTop > document.getElementsByClassName('navbar')[0].offsetHeight + 100)) {
+        if ((document.body.scrollTop > document.getElementsByClassName('navbar')[0].offsetHeight + 10) || (document.documentElement.scrollTop > document.getElementsByClassName('navbar')[0].offsetHeight + 10)) {
             document.getElementsByClassName('navbar')[0].classList.add('navbar-background-show');
         } else {
             document.getElementsByClassName('navbar')[0].classList.remove('navbar-background-show');
         }
     };
+
+    const obsoptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.7
+    };
+
+    const obscallback = function(entries, observer) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.replace('fade-out', 'fade-in');
+            }
+        });
+    };
+
+    const observer = new IntersectionObserver(obscallback, obsoptions);
+
+    let fadeElems = document.querySelectorAll('.fade');
+    fadeElems.forEach(elem => observer.observe(elem));
 });
