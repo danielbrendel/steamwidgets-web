@@ -17,6 +17,7 @@
 
 return [
     array('/', 'GET', 'index@index'),
+    array('/documentation', 'GET', 'index@documentation'),
 	array('/api/query/app', 'GET', 'api@queryAppInfo'),
     array('/api/query/server', 'GET', 'api@queryServerInfo'),
     array('/api/query/user', 'GET', 'api@queryUserInfo'),

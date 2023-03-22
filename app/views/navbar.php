@@ -1,4 +1,4 @@
-<nav class="navbar is-dark is-fixed-top" role="navigation" aria-label="main navigation">
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         <a class="navbar-item navbar-item-brand is-font-title" href="{{ url('/') }}">
             <img src="{{ asset('img/logo.png') }}"/>&nbsp;{{ env('APP_NAME') }}
@@ -13,23 +13,27 @@
 
     <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
-            <a class="navbar-item" href="{{ url('/#steam-app') }}" onclick="document.getElementById('burger-button').click(); document.querySelector('[name=steam-app]').scrollIntoView({behavior: 'smooth'}); return false;">
+            <a class="navbar-item" href="{{ url('/documentation') }}">
+                Documentation
+            </a>
+
+            <a class="navbar-item" href="{{ url('/documentation#steam-app') }}" onclick="document.getElementById('burger-button').click(); document.querySelector('[name=steam-app]').scrollIntoView({behavior: 'smooth'}); return false;">
                 Steam App
             </a>
 
-            <a class="navbar-item" href="{{ url('/#steam-server') }}" onclick="document.getElementById('burger-button').click(); document.querySelector('[name=steam-server]').scrollIntoView({behavior: 'smooth'}); return false;">
+            <a class="navbar-item" href="{{ url('/documentation#steam-server') }}" onclick="document.getElementById('burger-button').click(); document.querySelector('[name=steam-server]').scrollIntoView({behavior: 'smooth'}); return false;">
                 Steam Server
             </a>
 
-            <a class="navbar-item" href="{{ url('/#steam-user') }}" onclick="document.getElementById('burger-button').click(); document.querySelector('[name=steam-user]').scrollIntoView({behavior: 'smooth'}); return false;">
+            <a class="navbar-item" href="{{ url('/documentation#steam-user') }}" onclick="document.getElementById('burger-button').click(); document.querySelector('[name=steam-user]').scrollIntoView({behavior: 'smooth'}); return false;">
                 Steam User
             </a>
 
-            <a class="navbar-item" href="{{ url('/#steam-workshop') }}" onclick="document.getElementById('burger-button').click(); document.querySelector('[name=steam-workshop]').scrollIntoView({behavior: 'smooth'}); return false;">
+            <a class="navbar-item" href="{{ url('/documentation#steam-workshop') }}" onclick="document.getElementById('burger-button').click(); document.querySelector('[name=steam-workshop]').scrollIntoView({behavior: 'smooth'}); return false;">
                 Steam Workshop
             </a>
 
-            <a class="navbar-item" href="{{ url('/#steam-group') }}" onclick="document.getElementById('burger-button').click(); document.querySelector('[name=steam-group]').scrollIntoView({behavior: 'smooth'}); return false;">
+            <a class="navbar-item" href="{{ url('/documentation#steam-group') }}" onclick="document.getElementById('burger-button').click(); document.querySelector('[name=steam-group]').scrollIntoView({behavior: 'smooth'}); return false;">
                 Steam Group
             </a>
         </div>

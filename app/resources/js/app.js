@@ -227,4 +227,12 @@ window.hljs = hljs;
 
 document.addEventListener('DOMContentLoaded', function(){
     window.hljs.highlightAll();
+
+    window.onscroll = function() {
+        if ((document.body.scrollTop > document.getElementsByClassName('navbar')[0].offsetHeight + 100) || (document.documentElement.scrollTop > document.getElementsByClassName('navbar')[0].offsetHeight + 100)) {
+            document.getElementsByClassName('navbar')[0].classList.add('navbar-background-show');
+        } else {
+            document.getElementsByClassName('navbar')[0].classList.remove('navbar-background-show');
+        }
+    };
 });

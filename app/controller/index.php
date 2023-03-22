@@ -25,6 +25,20 @@ class IndexController extends BaseController {
 	public function index($request)
 	{
 		//Generate and return a view by using the helper
-		return parent::view(['content', 'index']);
+		return parent::view(['content', 'index'], [
+			'show_header' => true
+		]);
+	}
+
+	/**
+	 * Handles URL: /documentation
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\ViewHandler
+	 */
+	public function documentation($request)
+	{
+		//Generate and return a view by using the helper
+		return parent::view(['content', 'doc']);
 	}
 }
