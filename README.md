@@ -1,6 +1,6 @@
 # SteamWidgets Web Project
 
-(C) 2022 by Daniel Brendel
+(C) 2022 - 2023 by Daniel Brendel
 
 __Contact__: dbrendel1988(at)gmail(dot)com\
 __GitHub__: https://github.com/danielbrendel
