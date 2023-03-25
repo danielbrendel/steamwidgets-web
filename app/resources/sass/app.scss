@@ -31,7 +31,9 @@ body {
 }
 
 .navbar-menu {
-    background-color: rgb(76, 76, 120) !important;
+    @media screen and (max-width: 1089px) {
+        background-color: rgb(76, 76, 120) !important;
+    }
 }
 
 a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:hover, .navbar-link.is-active {

@@ -11,7 +11,7 @@
         </a>
     </div>
 
-    <div id="navbarBasicExample" class="navbar-menu navbar-purple">
+    <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
             <a class="navbar-item" href="{{ url('/documentation') }}">
                 Documentation
