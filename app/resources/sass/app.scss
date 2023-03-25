@@ -18,12 +18,20 @@ body {
     transition: .3s ease-in-out;
 }
 
+.navbar-no-transition {
+    transition: unset;
+}
+
 .navbar-item-brand img {
     border-radius: 50%;
 }
 
-.navbar-background-show {
-    background-color: rgb(76, 76, 120);
+.navbar-purple {
+    background-color: rgb(76, 76, 120) !important;
+}
+
+.navbar-menu {
+    background-color: rgb(76, 76, 120) !important;
 }
 
 a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:hover, .navbar-link.is-active {

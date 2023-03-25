@@ -29,6 +29,16 @@ window.vue = new Vue({
 
                         el.classList.toggle('is-active');
                         $target.classList.toggle('is-active');
+
+                        if (el.classList.contains('is-active')) {
+                            let rootel = document.getElementsByClassName('navbar')[0];
+                            rootel.classList.add('navbar-purple');
+                            rootel.classList.add('navbar-no-transition');
+                        } else {
+                            let rootel = document.getElementsByClassName('navbar')[0];
+                            rootel.classList.remove('navbar-purple');
+                            rootel.classList.remove('navbar-no-transition');
+                        }
                     });
                 });
             }
@@ -230,9 +240,9 @@ document.addEventListener('DOMContentLoaded', function(){
 
     window.onscroll = function() {
         if ((document.body.scrollTop > document.getElementsByClassName('navbar')[0].offsetHeight + 10) || (document.documentElement.scrollTop > document.getElementsByClassName('navbar')[0].offsetHeight + 10)) {
-            document.getElementsByClassName('navbar')[0].classList.add('navbar-background-show');
+            document.getElementsByClassName('navbar')[0].classList.add('navbar-purple');
         } else {
-            document.getElementsByClassName('navbar')[0].classList.remove('navbar-background-show');
+            document.getElementsByClassName('navbar')[0].classList.remove('navbar-purple');
         }
     };
 
