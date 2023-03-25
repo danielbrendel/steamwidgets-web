@@ -448,6 +448,9 @@ tbody strong {
 .button-get-started a {
     display: inline-block;
     width: 305px;
+    @media screen and (max-width: 479px) {
+        width: 283px;
+    }
     height: 65px;
     background-color: rgb(50, 115, 220);
     color: rgb(250, 250, 250);
