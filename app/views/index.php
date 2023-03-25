@@ -74,23 +74,28 @@ let widget = new SteamApp('#app-widget', {
 
 	<div class="widget-types">
 		<div class="widget-type fade fade-out">
-			Game/App
+			<div class="widget-type-icon"><i class="fas fa-gamepad fa-3x"></i></div>
+			<div class="widget-type-info">Game/App</div>
 		</div>
 
 		<div class="widget-type fade fade-out">
-			Workshop
+			<div class="widget-type-icon"><i class="fas fa-puzzle-piece fa-3x"></i></div>
+			<div class="widget-type-info">Workshop</div>
 		</div>
 
 		<div class="widget-type fade fade-out">
-			Group
+			<div class="widget-type-icon"><i class="fas fa-users fa-3x"></i></div>
+			<div class="widget-type-info">Group</div>
 		</div>
 
 		<div class="widget-type fade fade-out">
-			Player
+			<div class="widget-type-icon"><i class="fas fa-user fa-3x"></i></div>
+			<div class="widget-type-info">Player</div>
 		</div>
 
 		<div class="widget-type fade fade-out">
-			Gameserver
+			<div class="widget-type-icon"><i class="fas fa-server fa-3x"></i></div>
+			<div class="widget-type-info">Gameserver</div>
 		</div>
 	</div>
 </div>

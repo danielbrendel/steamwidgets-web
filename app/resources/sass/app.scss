@@ -405,7 +405,7 @@ tbody strong {
     margin-left: 5px;
     margin-right: 5px;
     margin-bottom: 15px;
-    padding-top: 59px;
+    padding-top: 25px;
     padding-bottom: 50px;
     background-color: rgb(50, 51, 76);
     border-radius: 12px;
@@ -413,6 +413,14 @@ tbody strong {
     box-shadow: 0 4px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
     font-size: 1.2em;
     text-align: center;
+}
+
+.widget-type-icon {
+    padding-bottom: 5px;
+}
+
+.widget-type-info {
+    padding-top: 5px;
 }
 
 .is-centered {
