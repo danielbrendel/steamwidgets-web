@@ -25,7 +25,5 @@
         <canvas id="hits-stats"></canvas>
     </div>
 
-    <div id="referrers">
-        
-    </div>
+    <div id="referrers"></div>
 </div>
