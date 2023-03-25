@@ -214,8 +214,10 @@ window.vue = new Vue({
 
                         let refcode = '<ul>';
                         response.referrers.forEach(function(referrer, index) {
-                            if (referrer.length > 0) {
-                                refcode += '<li>' + referrer + '</li>';
+                            if (referrer !== null) {
+                                if (referrer.length > 0) {
+                                    refcode += '<li>' + referrer + '</li>';
+                                }
                             }
                         });
                         refcode += '</ul>';

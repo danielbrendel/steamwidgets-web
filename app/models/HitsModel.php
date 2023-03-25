@@ -92,10 +92,19 @@ class HitsModel extends \Asatru\Database\Model
     public static function getReferrers($start, $end)
     {
         try {
-            $result = HitsModel::raw('SELECT DISTINCT referrer FROM `' . self::tableName() . '` WHERE DATE(created_at) >= ? AND DATE(created_at) <= ? ORDER BY referrer ASC', [
+            $items = HitsModel::raw('SELECT DISTINCT referrer FROM `' . self::tableName() . '` WHERE DATE(created_at) >= ? AND DATE(created_at) <= ? ORDER BY referrer ASC', [
                 $start,
                 $end
             ]);
+
+            $result = [];
+
+            foreach ($items as $item) {
+                $furl = parse_url($item->get('referrer'), PHP_URL_HOST);
+                if (!in_array($furl, $result)) {
+                    $result[] = $furl;
+                }
+            }
 
             return $result;
         } catch (\Exception $e) {
