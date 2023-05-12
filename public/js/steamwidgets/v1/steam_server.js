@@ -80,6 +80,10 @@
      {
          var req = new XMLHttpRequest();
          var self = this;
+
+         if ((typeof self.custom_events !== 'undefined') && (typeof self.custom_events.eventOnInit !== 'undefined')) {
+            self.dispatchEvent(self.custom_events.eventOnInit);
+        }
  
          req.onreadystatechange = function() {
              if (req.readyState == XMLHttpRequest.DONE) {
@@ -191,6 +195,10 @@
                  `;
  
                  self.innerHTML = html;
+
+                 if ((typeof self.custom_events !== 'undefined') && (typeof self.custom_events.eventOnCompleted !== 'undefined')) {
+                    self.dispatchEvent(self.custom_events.eventOnCompleted);
+                }
              }
          };
          req.open('GET', STEAMWIDGETS_SERVER_ENDPOINT + '/api/query/server?addr=' + addr, true);
@@ -293,65 +301,85 @@
  
      constructor(selector, config = {})
      {
-         this.selident = selector;
-         this.cfg = config;
- 
-         var addr = (typeof config.addr !== 'undefined') ? config.addr : null;
-         var header = (typeof config.header !== 'undefined') ? config.header : '';
-         var width = (typeof config.width !== 'undefined') ? config.width : null;
-         var height = (typeof config.height !== 'undefined') ? config.height : null;
-         var bots = (typeof config.bots !== 'undefined') ? config.bots : ':count bots';
-         var secure_yes = (typeof config.secure_yes !== 'undefined') ? config.secure_yes : 'secure';
-         var secure_no = (typeof config.secure_no !== 'undefined') ? config.secure_no : 'insecure';
-         var hosting_dedicated = (typeof config.hosting_dedicated !== 'undefined') ? config.hosting_dedicated : 'dedicated';
-         var hosting_listen = (typeof config.hosting_listen !== 'undefined') ? config.hosting_listen : 'listen';
-         var playtext = (typeof config.playtext !== 'undefined') ? config.playtext : 'Join';
- 
-         var styleBorder = null;
-         var styleShadow = 1;
-         var styleColorBackground = null;
-         var styleColorTextBright = null;
-         var styleColorTextDark = null;
-         
-         if (typeof config.style !== 'undefined') {
-             styleBorder = (typeof config.style.border !== 'undefined') ? config.style.border : null;
-             styleShadow = (typeof config.style.shadow !== 'undefined') ? config.style.shadow : 1;
-             styleColorBackground = (typeof config.style.colorBackground !== 'undefined') ? config.style.colorBackground : null;
-             styleColorTextBright = (typeof config.style.colorTextBright !== 'undefined') ? config.style.colorTextBright : null;
-             styleColorTextDark = (typeof config.style.colorTextDark !== 'undefined') ? config.style.colorTextDark : null;
-         }
- 
-         if (typeof styleShadow === 'boolean') {
-             styleShadow = (styleShadow) ? 1 : 0;
-         }
- 
-         this.elem = document.createElement('steam-server');
-         this.elem.setAttribute('addr', addr);
-         this.elem.setAttribute('header', header);
-         this.elem.setAttribute('style-border', styleBorder);
-         this.elem.setAttribute('style-shadow', styleShadow);
-         this.elem.setAttribute('style-color-background', styleColorBackground);
-         this.elem.setAttribute('style-color-text-bright', styleColorTextBright);
-         this.elem.setAttribute('style-color-text-dark', styleColorTextDark);
-         this.elem.setAttribute('bots', bots);
-         this.elem.setAttribute('secure-yes', secure_yes);
-         this.elem.setAttribute('secure-no', secure_no);
-         this.elem.setAttribute('hosting-dedicated', hosting_dedicated);
-         this.elem.setAttribute('hosting-listen', hosting_listen);
-         this.elem.setAttribute('playtext', playtext);
+        this.selident = selector;
+        this.cfg = config;
 
-         if (width !== null) {
-             this.elem.setAttribute('width', width);
-         }
- 
-         if (height !== null) {
-             this.elem.setAttribute('height', height);
-         }
- 
-         let sel = document.querySelector(selector);
-         if (sel) {
-             sel.appendChild(this.elem);
-         }
+        var addr = (typeof config.addr !== 'undefined') ? config.addr : null;
+        var header = (typeof config.header !== 'undefined') ? config.header : '';
+        var width = (typeof config.width !== 'undefined') ? config.width : null;
+        var height = (typeof config.height !== 'undefined') ? config.height : null;
+        var bots = (typeof config.bots !== 'undefined') ? config.bots : ':count bots';
+        var secure_yes = (typeof config.secure_yes !== 'undefined') ? config.secure_yes : 'secure';
+        var secure_no = (typeof config.secure_no !== 'undefined') ? config.secure_no : 'insecure';
+        var hosting_dedicated = (typeof config.hosting_dedicated !== 'undefined') ? config.hosting_dedicated : 'dedicated';
+        var hosting_listen = (typeof config.hosting_listen !== 'undefined') ? config.hosting_listen : 'listen';
+        var playtext = (typeof config.playtext !== 'undefined') ? config.playtext : 'Join';
+
+        var styleBorder = null;
+        var styleShadow = 1;
+        var styleColorBackground = null;
+        var styleColorTextBright = null;
+        var styleColorTextDark = null;
+
+        var evtOnInit = null;
+        var evtOnCompleted = null;
+        
+        if (typeof config.style !== 'undefined') {
+            styleBorder = (typeof config.style.border !== 'undefined') ? config.style.border : null;
+            styleShadow = (typeof config.style.shadow !== 'undefined') ? config.style.shadow : 1;
+            styleColorBackground = (typeof config.style.colorBackground !== 'undefined') ? config.style.colorBackground : null;
+            styleColorTextBright = (typeof config.style.colorTextBright !== 'undefined') ? config.style.colorTextBright : null;
+            styleColorTextDark = (typeof config.style.colorTextDark !== 'undefined') ? config.style.colorTextDark : null;
+        }
+
+        if (typeof config.events !== 'undefined') {
+            evtOnInit = (typeof config.events.onInit === 'function') ? config.events.onInit : null;
+            evtOnCompleted = (typeof config.events.onCompleted === 'function') ? config.events.onCompleted : null;
+        }
+
+        if (typeof styleShadow === 'boolean') {
+            styleShadow = (styleShadow) ? 1 : 0;
+        }
+
+        this.elem = document.createElement('steam-server');
+        this.elem.setAttribute('addr', addr);
+        this.elem.setAttribute('header', header);
+        this.elem.setAttribute('style-border', styleBorder);
+        this.elem.setAttribute('style-shadow', styleShadow);
+        this.elem.setAttribute('style-color-background', styleColorBackground);
+        this.elem.setAttribute('style-color-text-bright', styleColorTextBright);
+        this.elem.setAttribute('style-color-text-dark', styleColorTextDark);
+        this.elem.setAttribute('bots', bots);
+        this.elem.setAttribute('secure-yes', secure_yes);
+        this.elem.setAttribute('secure-no', secure_no);
+        this.elem.setAttribute('hosting-dedicated', hosting_dedicated);
+        this.elem.setAttribute('hosting-listen', hosting_listen);
+        this.elem.setAttribute('playtext', playtext);
+
+        if (width !== null) {
+            this.elem.setAttribute('width', width);
+        }
+
+        if (height !== null) {
+            this.elem.setAttribute('height', height);
+        }
+
+        this.elem.custom_events = {};
+
+        if (evtOnInit !== null) {
+            this.elem.custom_events.eventOnInit = new CustomEvent('onInit', { detail: this });
+            this.elem.addEventListener('onInit', evtOnInit, false);
+        }
+
+        if (evtOnCompleted !== null) {
+            this.elem.custom_events.eventOnCompleted = new CustomEvent('onCompleted', { detail: this });
+            this.elem.addEventListener('onCompleted', evtOnCompleted, false);
+        }
+
+        let sel = document.querySelector(selector);
+        if (sel) {
+            sel.appendChild(this.elem);
+        }
      }
  
      updateWidget()

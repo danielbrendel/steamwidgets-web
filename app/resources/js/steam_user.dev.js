@@ -74,11 +74,15 @@
      {
          var req = new XMLHttpRequest();
          var self = this;
+
+         if ((typeof self.custom_events !== 'undefined') && (typeof self.custom_events.eventOnInit !== 'undefined')) {
+            self.dispatchEvent(self.custom_events.eventOnInit);
+         }
  
          req.onreadystatechange = function() {
              if (req.readyState == XMLHttpRequest.DONE) {
                  let json = JSON.parse(req.responseText);
-
+                 
                  if (!document.getElementById('steamwidgets-user-styles')) {
                      let link = document.createElement('link');
                      link.id = 'steamwidgets-user-styles';
@@ -170,6 +174,10 @@
                  `;
  
                  self.innerHTML = html;
+
+                 if ((typeof self.custom_events !== 'undefined') && (typeof self.custom_events.eventOnCompleted !== 'undefined')) {
+                    self.dispatchEvent(self.custom_events.eventOnCompleted);
+                 }
              }
          };
          req.open('GET', STEAMWIDGETS_USER_ENDPOINT + '/api/query/user?steamid=' + steamid, true);
@@ -281,6 +289,9 @@
          var styleColorBackground = null;
          var styleColorTextBright = null;
          var styleColorTextDark = null;
+
+         var evtOnInit = null;
+         var evtOnCompleted = null;
          
          if (typeof config.style !== 'undefined') {
              styleBorder = (typeof config.style.border !== 'undefined') ? config.style.border : null;
@@ -288,6 +299,11 @@
              styleColorBackground = (typeof config.style.colorBackground !== 'undefined') ? config.style.colorBackground : null;
              styleColorTextBright = (typeof config.style.colorTextBright !== 'undefined') ? config.style.colorTextBright : null;
              styleColorTextDark = (typeof config.style.colorTextDark !== 'undefined') ? config.style.colorTextDark : null;
+         }
+
+         if (typeof config.events !== 'undefined') {
+            evtOnInit = (typeof config.events.onInit === 'function') ? config.events.onInit : null;
+            evtOnCompleted = (typeof config.events.onCompleted === 'function') ? config.events.onCompleted : null;
          }
  
          if (typeof styleShadow === 'boolean') {
@@ -313,6 +329,18 @@
  
          if (height !== null) {
              this.elem.setAttribute('height', height);
+         }
+
+         this.elem.custom_events = {};
+
+         if (evtOnInit !== null) {
+            this.elem.custom_events.eventOnInit = new CustomEvent('onInit', { detail: this });
+            this.elem.addEventListener('onInit', evtOnInit, false);
+         }
+
+         if (evtOnCompleted !== null) {
+            this.elem.custom_events.eventOnCompleted = new CustomEvent('onCompleted', { detail: this });
+            this.elem.addEventListener('onCompleted', evtOnCompleted, false);
          }
  
          let sel = document.querySelector(selector);

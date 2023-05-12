@@ -184,7 +184,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     let widget = new SteamApp('#app-widget', {
         appid: '{{ env('APP_EXAMPLE_APP') }}',
-        //You can specify the same attributes as shown in the table above
+        //You can specify the same attributes as shown in the table above as well as events (see below)
     });
 });
 &lt;/script&gt;
@@ -224,6 +224,33 @@ document.addEventListener('DOMContentLoaded', function() {
 				<tr>
 					<td>remove()</td>
 					<td>Removes the widget from the document</td>
+				</tr>
+			</tbody>
+		</table>
+	</p>
+
+	<p>
+		<br/>The following events are available for a Steam App object:<br/>
+
+		<table>
+			<thead>
+				<tr></tr>
+				<tr></tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><strong>Event</strong></td>
+					<td><strong>Description</strong></td>
+				</tr>
+
+				<tr class="tr-colored">
+					<td>events.onInit(e)</td>
+					<td>Called when the widget is initialized</td>
+				</tr>
+
+				<tr>
+					<td>events.onCompleted(e)</td>
+					<td>Called when the widget has finished loading</td>
 				</tr>
 			</tbody>
 		</table>
@@ -353,7 +380,7 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
     let widget = new SteamServer('#server-widget', {
         addr: '{{ env('APP_EXAMPLE_SERVER') }}',
-        //You can specify the same attributes as shown in the table above
+        //You can specify the same attributes as shown in the table above as well as events (see below)
     });
 });
 &lt;/script&gt;
@@ -393,6 +420,33 @@ document.addEventListener('DOMContentLoaded', function() {
 				<tr>
 					<td>remove()</td>
 					<td>Removes the widget from the document</td>
+				</tr>
+			</tbody>
+		</table>
+	</p>
+
+	<p>
+		<br/>The following events are available for a Steam Server object:<br/>
+
+		<table>
+			<thead>
+				<tr></tr>
+				<tr></tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><strong>Event</strong></td>
+					<td><strong>Description</strong></td>
+				</tr>
+
+				<tr class="tr-colored">
+					<td>events.onInit(e)</td>
+					<td>Called when the widget is initialized</td>
+				</tr>
+
+				<tr>
+					<td>events.onCompleted(e)</td>
+					<td>Called when the widget has finished loading</td>
 				</tr>
 			</tbody>
 		</table>
@@ -512,7 +566,7 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
     let widget = new SteamUser('#user-widget', {
         steamid: '{{ env('APP_EXAMPLE_USER') }}',
-        //You can specify the same attributes as shown in the table above
+        //You can specify the same attributes as shown in the table above as well as events (see below)
     });
 });
 &lt;/script&gt;
@@ -552,6 +606,33 @@ document.addEventListener('DOMContentLoaded', function() {
 				<tr>
 					<td>remove()</td>
 					<td>Removes the widget from the document</td>
+				</tr>
+			</tbody>
+		</table>
+	</p>
+
+	<p>
+		<br/>The following events are available for a Steam User object:<br/>
+
+		<table>
+			<thead>
+				<tr></tr>
+				<tr></tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><strong>Event</strong></td>
+					<td><strong>Description</strong></td>
+				</tr>
+
+				<tr class="tr-colored">
+					<td>events.onInit(e)</td>
+					<td>Called when the widget is initialized</td>
+				</tr>
+
+				<tr>
+					<td>events.onCompleted(e)</td>
+					<td>Called when the widget has finished loading</td>
 				</tr>
 			</tbody>
 		</table>
@@ -674,7 +755,7 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
     let widget = new SteamWorkshop('#workshop-widget', {
         itemid: '{{ env('APP_EXAMPLE_WORKSHOP') }}',
-        //You can specify the same attributes as shown in the table above
+        //You can specify the same attributes as shown in the table above as well as events (see below)
     });
 });
 &lt;/script&gt;
@@ -714,6 +795,33 @@ document.addEventListener('DOMContentLoaded', function() {
 				<tr>
 					<td>remove()</td>
 					<td>Removes the widget from the document</td>
+				</tr>
+			</tbody>
+		</table>
+	</p>
+
+	<p>
+		<br/>The following events are available for a Steam Workshop object:<br/>
+
+		<table>
+			<thead>
+				<tr></tr>
+				<tr></tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><strong>Event</strong></td>
+					<td><strong>Description</strong></td>
+				</tr>
+
+				<tr class="tr-colored">
+					<td>events.onInit(e)</td>
+					<td>Called when the widget is initialized</td>
+				</tr>
+
+				<tr>
+					<td>events.onCompleted(e)</td>
+					<td>Called when the widget has finished loading</td>
 				</tr>
 			</tbody>
 		</table>
@@ -831,7 +939,7 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
     let widget = new SteamGroup('#group-widget', {
         group: '{{ env('APP_EXAMPLE_GROUP') }}',
-        //You can specify the same attributes as shown in the table above
+        //You can specify the same attributes as shown in the table above as well as events (see below)
     });
 });
 &lt;/script&gt;
@@ -871,6 +979,33 @@ document.addEventListener('DOMContentLoaded', function() {
 				<tr>
 					<td>remove()</td>
 					<td>Removes the widget from the document</td>
+				</tr>
+			</tbody>
+		</table>
+	</p>
+
+	<p>
+		<br/>The following events are available for a Steam Group object:<br/>
+
+		<table>
+			<thead>
+				<tr></tr>
+				<tr></tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><strong>Event</strong></td>
+					<td><strong>Description</strong></td>
+				</tr>
+
+				<tr class="tr-colored">
+					<td>events.onInit(e)</td>
+					<td>Called when the widget is initialized</td>
+				</tr>
+
+				<tr>
+					<td>events.onCompleted(e)</td>
+					<td>Called when the widget has finished loading</td>
 				</tr>
 			</tbody>
 		</table>
