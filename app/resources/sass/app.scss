@@ -26,13 +26,13 @@ body {
     border-radius: 50%;
 }
 
-.navbar-purple {
-    background-color: rgb(76, 76, 120) !important;
+.navbar-background-color {
+    background-color: rgb(55, 93, 134) !important;
 }
 
 .navbar-menu {
     @media screen and (max-width: 1089px) {
-        background-color: rgb(76, 76, 120) !important;
+        background-color: rgb(55, 93, 134) !important;
     }
 }
 
@@ -310,8 +310,8 @@ tbody strong {
 
 .footer {
     width: 100%;
-    color: rgb(100, 100, 100);
-    background-color: rgb(50, 50, 48);
+    color: rgb(150, 150, 150);
+    background-color: rgb(38, 65, 95);
     padding: 1rem 1.5rem 1rem;
 }
 
@@ -403,13 +403,16 @@ tbody strong {
     position: relative;
     display: inline-block;
     width: 150px;
+    @media screen and (max-width: 768px) {
+        width: 250px;
+    }
     height: 150px;
     margin-left: 5px;
     margin-right: 5px;
     margin-bottom: 15px;
     padding-top: 25px;
     padding-bottom: 50px;
-    background-color: rgb(50, 51, 76);
+    background-color: rgb(35, 55, 76);
     border-radius: 12px;
     border-left: 3px solid rgb(74, 123, 163);
     box-shadow: 0 4px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
