@@ -47,7 +47,7 @@ class HitsModel extends \Asatru\Database\Model
             static::validateHitType($type);
 
             $token = md5($_SERVER['REMOTE_ADDR']);
-            $referrer = (isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '');
+            $referrer = (isset($_SERVER['HTTP_REFERER']) ? parse_url($_SERVER['HTTP_REFERER'], PHP_URL_HOST) : '');
 
             HitsModel::raw('INSERT INTO `' . self::tableName() . '` (hash_token, hittype, referrer, created_at) VALUES(?, ?, ?, CURRENT_TIMESTAMP)', [
                 $token,
@@ -100,9 +100,8 @@ class HitsModel extends \Asatru\Database\Model
             $result = [];
 
             foreach ($items as $item) {
-                $furl = parse_url($item->get('referrer'), PHP_URL_HOST);
-                if (!in_array($furl, $result)) {
-                    $entry['ref'] = $furl;
+                if (!static::referrer_exists($item->get('referrer'), $result)) {
+                    $entry['ref'] = $item->get('referrer');
                     $entry['count'] = $item->get('count');
                     $result[] = $entry;
                 }
@@ -112,6 +111,24 @@ class HitsModel extends \Asatru\Database\Model
         } catch (\Exception $e) {
             throw $e;
         }
+    }
+
+    /**
+     * Check if referrer has already been added to the array
+     * 
+     * @param $needle
+     * @param $haystack
+     * @return bool
+     */
+    private static function referrer_exists($needle, $haystack)
+    {
+        foreach ($haystack as $item) {
+            if ((isset($item['ref']) && ($item['ref'] === $needle))) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**
