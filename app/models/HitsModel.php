@@ -101,6 +101,12 @@ class HitsModel extends \Asatru\Database\Model
 
             foreach ($items as $item) {
                 if (!static::referrer_exists($item->get('referrer'), $result)) {
+                    if (env('APP_STATSFILTERLOCAL', false)) {
+                        if (static::assumed_localhost($item->get('referrer'))) {
+                            continue;
+                        }
+                    }
+
                     $entry['ref'] = $item->get('referrer');
                     $entry['count'] = $item->get('count');
                     $result[] = $entry;
@@ -129,6 +135,19 @@ class HitsModel extends \Asatru\Database\Model
         }
 
         return false;
+    }
+
+    /**
+     * Check if the given referrer is a local address
+     * 
+     * @param $referrer
+     * @return bool
+     */
+    private static function assumed_localhost($referrer)
+    {
+        $localhosts = config('localhosts');
+
+        return in_array($referrer, $localhosts);
     }
 
     /**
