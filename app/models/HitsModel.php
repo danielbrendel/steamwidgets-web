@@ -92,7 +92,7 @@ class HitsModel extends \Asatru\Database\Model
     public static function getReferrers($start, $end)
     {
         try {
-            $items = HitsModel::raw('SELECT DISTINCT referrer, COUNT(referrer) AS count FROM `' . self::tableName() . '` WHERE DATE(created_at) >= ? AND DATE(created_at) <= ? GROUP BY referrer ORDER BY referrer ASC', [
+            $items = HitsModel::raw('SELECT DISTINCT referrer, COUNT(referrer) AS count FROM `' . self::tableName() . '` WHERE DATE(created_at) >= ? AND DATE(created_at) <= ? GROUP BY referrer ORDER BY count DESC', [
                 $start,
                 $end
             ]);
