@@ -213,16 +213,17 @@ window.vue = new Vue({
                         );
 
                         let refcode = '<ul>';
+
                         response.referrers.forEach(function(referrer, index) {
                             if (referrer !== null) {
-                                if (referrer.length > 0) {
-                                    refcode += '<li>' + referrer + '</li>';
+                                if ((referrer.ref !== null) && (referrer.ref.length > 0)) {
+                                    refcode += '<li>' + referrer.ref + ' (' + referrer.count + ')</li>';
                                 }
                             }
                         });
                         refcode += '</ul>';
 
-                        document.getElementById('referrers').innerHTML = refcode;
+                        document.getElementById('referrers').innerHTML = 'Referrers (' + response.referrers.length.toString() + '):<br/>' + refcode;
                     }
                 } else {
                     alert(response.msg);
