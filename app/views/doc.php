@@ -498,17 +498,17 @@ document.addEventListener('DOMContentLoaded', function() {
 				</tr>
 
 				<tr class="tr-colored">
-					<td>online_yes</td>
+					<td>online-yes/online_yes</td>
 					<td>Specifies the text that is displayed if the user is currently online</td>
 				</tr>
 
 				<tr>
-					<td>online_no</td>
+					<td>online-no/online_no</td>
 					<td>Specifies the text that is displayed if the user is not currently online</td>
 				</tr>
 
 				<tr class="tr-colored">
-					<td>member_since</td>
+					<td>member-since/member_since</td>
 					<td>Specifies the text and format of the info that shows since when the user account is registered. Use <b>:year</b>, <b>:month</b> and <b>:day</b> to format the date.</td>
 				</tr>
 
