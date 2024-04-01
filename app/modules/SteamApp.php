@@ -20,7 +20,7 @@ class SteamApp
     public static function querySteamData($appid, $lang)
     {
         // Check if data is cached
-        $cacheKey = 'steam_' . $appid . '_' . $lang;
+        $cacheKey = 'steam_app_' . $appid . '_' . $lang;
         $cachedData = self::getFromCache($cacheKey);
         if ($cachedData !== false) {
             return $cachedData;
