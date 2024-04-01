@@ -5,8 +5,7 @@
 <div class="columns is-content">
 	<div class="column is-half">
 		<div class="is-highlight is-sidepadding fade fade-out">
-			Create responsive, localizable and adjustable widgets for various Steam entities
-			very easily with only few code.
+			Easily create responsive, customizable widgets for various Steam entities with just a few lines of code.
 		</div>
 	</div>
 
@@ -37,9 +36,7 @@ let widget = new SteamApp('#app-widget', {
 
 	<div class="column is-half">
 		<div class="is-highlight is-sidepadding fade fade-out">
-			Use JavaScript to control your Widgets for various situations.
-			Set various options on initialization and perform operatings
-			on various events later.
+			Use JavaScript to control your widgets for various scenarios. Define options during initialization and execute operations on different events later.
 		</div>
 	</div>
 </div>
@@ -47,9 +44,7 @@ let widget = new SteamApp('#app-widget', {
 <div class="columns is-content is-smallscreen">
 	<div class="column is-half">
 		<div class="is-highlight is-sidepadding fade fade-out">
-			Use JavaScript to control your Widgets for various situations.
-			Set various options on initialization and perform operatings
-			on various events later.
+			Use JavaScript to control your widgets for various scenarios. Define options during initialization and execute operations on different events later.
 		</div>
 	</div>
 
@@ -70,32 +65,32 @@ let widget = new SteamApp('#app-widget', {
 <div><hr/></div>
 
 <div class="content-section">
-	<h3>Use widgets for the following Steam entities</h3>
+	<h3>Utilize widgets for the following Steam entities</h3>
 
 	<div class="widget-types">
 		<div class="widget-type fade fade-out">
 			<div class="widget-type-icon"><i class="fas fa-gamepad fa-3x"></i></div>
-			<div class="widget-type-info">Game/App</div>
+			<div class="widget-type-info">Games/Apps</div>
 		</div>
 
 		<div class="widget-type fade fade-out">
 			<div class="widget-type-icon"><i class="fas fa-puzzle-piece fa-3x"></i></div>
-			<div class="widget-type-info">Workshop</div>
+			<div class="widget-type-info">Workshop Items</div>
 		</div>
 
 		<div class="widget-type fade fade-out">
 			<div class="widget-type-icon"><i class="fas fa-users fa-3x"></i></div>
-			<div class="widget-type-info">Group</div>
+			<div class="widget-type-info">Groups</div>
 		</div>
 
 		<div class="widget-type fade fade-out">
 			<div class="widget-type-icon"><i class="fas fa-user fa-3x"></i></div>
-			<div class="widget-type-info">Player</div>
+			<div class="widget-type-info">Players</div>
 		</div>
 
 		<div class="widget-type fade fade-out">
 			<div class="widget-type-icon"><i class="fas fa-server fa-3x"></i></div>
-			<div class="widget-type-info">Gameserver</div>
+			<div class="widget-type-info">Game Servers</div>
 		</div>
 	</div>
 </div>
@@ -105,7 +100,7 @@ let widget = new SteamApp('#app-widget', {
 <div class="columns is-content">
 	<div class="column is-half">
 		<div class="is-highlight is-sidepadding fade fade-out padding-top-cdn">
-			You can use {{ env('APP_NAME') }} via our CDN for quick usages.
+			Quickly use {{ env('APP_NAME') }} via our CDN.
 		</div>
 	</div>
 
@@ -126,15 +121,14 @@ let widget = new SteamApp('#app-widget', {
 
 	<div class="column is-half">
 		<div class="is-highlight is-sidepadding fade fade-out padding-top-npm">
-			You can also use {{ env('APP_NAME') }} via Node.js Package Manager
-		</div>
+			Alternatively, use {{ env('APP_NAME') }} via Node.js Package Manager (npm).		</div>
 	</div>
 </div>
 
 <div class="columns is-content is-smallscreen">
 	<div class="column is-half">
 		<div class="is-highlight is-sidepadding fade fade-out padding-top-npm">
-			You can also use {{ env('APP_NAME') }} via Node.js Package Manager
+			Alternatively, use {{ env('APP_NAME') }} via Node.js Package Manager (npm).
 		</div>
 	</div>
 
