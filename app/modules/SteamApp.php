@@ -78,7 +78,10 @@ class SteamApp
     {
         $redis = new Redis();
         $redis->connect(env('REDIS_HOST'), env('REDIS_PORT'));
-        $redis->select(env('REDIS_DATABASE')); // Selecting Redis database index 5
+        if (env('REDIS_PASS') !== '') {
+            $redis->auth(env('REDIS_PASS'));
+        }
+        $redis->select(env('REDIS_DATABASE')); // Selecting Redis database index
         
         $cachedData = $redis->get($key);
         if ($cachedData !== false) {
@@ -98,7 +101,10 @@ class SteamApp
     {
         $redis = new Redis();
         $redis->connect(env('REDIS_HOST'), env('REDIS_PORT'));
-        $redis->select(env('REDIS_DATABASE')); // Selecting Redis database index 5
+        if (env('REDIS_PASS') !== '') {
+            $redis->auth(env('REDIS_PASS'));
+        }
+        $redis->select(env('REDIS_DATABASE')); // Selecting Redis database index
 
         $redis->set($key, json_encode($value), env('REDIS_EXPIRATION'));
     }
