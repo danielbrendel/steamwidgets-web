@@ -1,5 +1,7 @@
 <?php
 
+use Redis;
+
 /**
  * Class SteamWorkshop
  * 
@@ -12,13 +14,21 @@ class SteamWorkshop
     /**
      * Query item data from Steam Workshop item
      * 
-     * @param $appid
-     * @param $lang
+     * @param $itemid
      * @return mixed
      * @throws \Exception
      */
     public static function querySteamData($itemid)
     {
+        // Generate cache key
+        $cacheKey = 'steam_workshop_' . $itemid;
+
+        // Check if data is cached
+        $cachedData = self::getFromCache($cacheKey);
+        if ($cachedData !== false) {
+            return json_decode($cachedData);
+        }
+
         $handle = curl_init(self::STEAM_ENDPOINT);
 
         curl_setopt($handle, CURLOPT_HEADER, false);
@@ -30,7 +40,7 @@ class SteamWorkshop
         $response = curl_exec($handle);
 
         if(curl_error($handle) !== '') {
-            throw new \Exception('cURL error occured');
+            throw new \Exception('cURL error occurred');
         }
 
         curl_close($handle);
@@ -38,16 +48,49 @@ class SteamWorkshop
         $obj = json_decode($response);
         
         if ((isset($obj->response->result)) && ($obj->response->result) && (isset($obj->response->resultcount)) && ($obj->response->resultcount == 1)) {
-            $obj->response->publishedfiledetails[0]->creator_data = null;
+            $workshopData = $obj->response->publishedfiledetails[0];
 
-            try {
-                $obj->response->publishedfiledetails[0]->creator_data = SteamUser::querySteamData(env('STEAM_API_KEY'), $obj->response->publishedfiledetails[0]->creator);
-            } catch (\Exception $e) {
-            }
-            
-            return $obj->response->publishedfiledetails[0];
+            // Store data in cache
+            self::setToCache($cacheKey, json_encode($workshopData));
+
+            return $workshopData;
         }
 
         throw new \Exception('Invalid data response');
+    }
+
+    /**
+     * Get data from Redis cache
+     *
+     * @param $key
+     * @return mixed|bool
+     */
+    private static function getFromCache($key)
+    {
+        $redis = new Redis();
+        $redis->connect(env('REDIS_HOST'), env('REDIS_PORT'));
+        $redis->select(env('REDIS_DATABASE')); // Selecting Redis database index 5
+
+        $cachedData = $redis->get($key);
+        if ($cachedData !== false) {
+            return json_decode($cachedData);
+        }
+
+        return false;
+    }
+
+    /**
+     * Set data to Redis cache
+     *
+     * @param $key
+     * @param $value
+     */
+    private static function setToCache($key, $value)
+    {
+        $redis = new Redis();
+        $redis->connect(env('REDIS_HOST'), env('REDIS_PORT'));
+        $redis->select(env('REDIS_DATABASE')); // Selecting Redis database index 5
+
+        $redis->set($key, json_encode($value), env('REDIS_EXPIRATION'));
     }
 }
