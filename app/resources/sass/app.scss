@@ -279,6 +279,11 @@ tbody strong {
     text-decoration: underline;
 }
 
+.sponsoring {
+    position: relative;
+    margin-top: 35px;
+}
+
 .stats-input {
     padding: 8px;
     color: rgb(50, 50, 50);
@@ -448,6 +453,14 @@ tbody strong {
 
 .padding-top-npm {
     padding-top: 45px;
+}
+
+.background-get-started {
+    background-color: rgb(35, 55, 79);
+    @media screen and (min-width: 768px) {
+        border-radius: 10px;
+    }
+    margin-bottom: 30px;
 }
 
 .button-get-started {
