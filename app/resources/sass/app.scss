@@ -455,6 +455,14 @@ tbody strong {
     padding-top: 45px;
 }
 
+.background-get-started {
+    background-color: rgb(35, 55, 79);
+    @media screen and (min-width: 768px) {
+        border-radius: 10px;
+    }
+    margin-bottom: 30px;
+}
+
 .button-get-started {
     margin-top: 50px;
     margin-bottom: 50px;

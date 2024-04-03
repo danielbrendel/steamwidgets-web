@@ -146,17 +146,17 @@ let widget = new SteamApp('#app-widget', {
 </div>
 @endif
 
-<div><hr/></div>
+@if (!env('APP_ENABLEDONATION'))
+	<div><hr/></div>
+@endif
 
-<div class="content-section is-centered">
+<div class="content-section is-centered {{ (env('APP_ENABLEDONATION')) ? 'background-get-started' : '' }}">
 	<div class="is-sidepadding button-get-started fade fade-out">
 		<a href="{{ url('/documentation') }}">Get Started!</a>
 	</div>
 </div>
 
 @if (env('APP_ENABLEDONATION'))
-	<div><hr/></div>
-
 	<div class="content-section is-centered">
 		<div class="is-sidepadding fade fade-out">
 			<h3>Your support is greatly appreciated</h3>
