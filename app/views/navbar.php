@@ -40,11 +40,11 @@
 
         <div class="navbar-end">
             <div class="navbar-item">
-                <img src="https://img.shields.io/github/forks/{{ env('APP_PACKAGE') }}?style=flat"/>
+                <img src="https://img.shields.io/github/forks/{{ env('APP_REPOSITORY') }}?style=flat"/>
             </div>
 
             <div class="navbar-item">
-                <img src="https://img.shields.io/github/stars/{{ env('APP_PACKAGE') }}?style=flat"/>
+                <img src="https://img.shields.io/github/stars/{{ env('APP_REPOSITORY') }}?style=flat"/>
             </div>
 
             <div class="navbar-item">
