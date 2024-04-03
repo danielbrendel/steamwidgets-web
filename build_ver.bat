@@ -1,3 +1,5 @@
+REM Build versioned assets
+
 @echo off
 cls
 

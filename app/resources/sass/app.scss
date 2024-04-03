@@ -70,6 +70,11 @@ a.navbar-burger:hover {
     }
 }
 
+#app hr {
+    background-color: rgb(90, 125, 143);
+    height: 1px;
+}
+
 .is-font-title {
     font-family: 'Helvetica', Verdana, Arial, sans-serif;
     font-size: 20px;
@@ -209,7 +214,7 @@ a.navbar-burger:hover {
 }
 
 .content-section tbody {
-    border: 1px solid #ccc;
+    border: 1px solid rgb(61, 87, 100);
 }
 
 .content-section td {
