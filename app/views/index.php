@@ -153,3 +153,21 @@ let widget = new SteamApp('#app-widget', {
 		<a href="{{ url('/documentation') }}">Get Started!</a>
 	</div>
 </div>
+
+@if (env('APP_ENABLEDONATION'))
+	<div><hr/></div>
+
+	<div class="content-section is-centered">
+		<div class="is-sidepadding fade fade-out">
+			<h3>Your support is greatly appreciated</h3>
+
+			<p>
+				Your support helps to continue working on the project and providing the required infrastructure.
+			</p>
+
+			<p class="sponsoring">
+				<a href='https://ko-fi.com/C0C7V2ESD' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi2.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+			</p>
+		</div>
+	</div>
+@endif
