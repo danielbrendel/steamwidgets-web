@@ -28,7 +28,7 @@
     "webpack-cli": "^4.10.0"
   },
   "dependencies": {
-    "axios": "^0.27.2",
+    "axios": "^1.6.8",
     "chart.js": "^3.9.1",
     "highlight.js": "^11.7.0",
     "style-loader": "^1.2.1"
