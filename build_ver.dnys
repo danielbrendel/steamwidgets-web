@@ -1,0 +1,51 @@
+# Build versioned assets
+
+require "textinput";
+require "fileio";
+
+setinput ver "Please enter version to build: ";
+print "Using version: %ver";
+
+global path string;
+getscriptpath path;
+
+function update_asset void(type string, name string)
+{
+	local bop bool;
+
+	dexists "%pathpublic\%type\steamwidgets" bop;
+	if (%bop, -eq, false) {
+		dcreate "%pathpublic\%type\steamwidgets" void;
+	};
+
+	dexists "%pathpublic\%type\steamwidgets\%ver" bop;
+	if (%bop, -eq, false) {
+		dcreate "%pathpublic\%type\steamwidgets\%ver" void;
+	};
+
+	fexists "%pathpublic\%type\steamwidgets\%ver\%name.%type" bop;
+	if (%bop, -eq, true) {
+		fremove "%pathpublic\%type\steamwidgets\%ver\%name.%type" void;
+	};
+
+	fcopy "%path\app\resources\%type\%name.dev.%type" "%path\public\%type\steamwidgets\%ver\%name.%type" void;
+};
+
+call update_asset("js", "steam_app") => void;
+call update_asset("css", "steam_app") => void;
+
+call update_asset("js", "steam_group") => void;
+call update_asset("css", "steam_group") => void;
+
+call update_asset("js", "steam_server") => void;
+call update_asset("css", "steam_server") => void;
+
+call update_asset("js", "steam_user") => void;
+call update_asset("css", "steam_user") => void;
+
+call update_asset("js", "steam_workshop") => void;
+call update_asset("css", "steam_workshop") => void;
+
+print "Job done";
+
+unset path;
