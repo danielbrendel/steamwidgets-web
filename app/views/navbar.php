@@ -41,13 +41,13 @@
         <div class="navbar-end">
             @if (env('APP_REPOSITORY'))
             <div class="navbar-item">
-                <img src="https://img.shields.io/github/forks/{{ env('APP_REPOSITORY') }}?style=flat"/>
+                <img src="https://img.shields.io/github/stars/{{ env('APP_REPOSITORY') }}?style=flat"/>
             </div>
             @endif
 
             @if (env('APP_REPOSITORY'))
             <div class="navbar-item">
-                <img src="https://img.shields.io/github/stars/{{ env('APP_REPOSITORY') }}?style=flat"/>
+                <img src="https://img.shields.io/github/forks/{{ env('APP_REPOSITORY') }}?style=flat"/>
             </div>
             @endif
 
