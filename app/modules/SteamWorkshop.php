@@ -1,7 +1,4 @@
 <?php
-
-use Redis;
-
 /**
  * Class SteamWorkshop
  * 
