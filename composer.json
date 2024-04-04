@@ -21,7 +21,8 @@
         "php": "^8.0",
 		"danielbrendel/asatru-php-framework": "dev-main",
         "phpmailer/phpmailer": "^6.1",
-        "nesbot/carbon": "^2.0"
+        "nesbot/carbon": "^2.0",
+        "predis/predis": "^2.2"
     },
 	"scripts": {
 		"post-root-package-install": [
