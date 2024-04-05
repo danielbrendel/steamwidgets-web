@@ -33,14 +33,13 @@ class SteamCache {
      */
     public static function cachedSteamUser($key, $steamid)
     {
-        $cache_driver = env('CACHE_DRIVER', null);
-        $cache_duration = env('CACHE_DURATION', 123);
+        $cache = config('cache');
 
-        if ($cache_driver === 'db') {
-            return json_decode(CacheModel::remember('steam_user_' . $steamid, $cache_duration, function() use ($key, $steamid) {
+        if ($cache->driver === 'db') {
+            return json_decode(CacheModel::remember('steam_user_' . $steamid, $cache->duration, function() use ($key, $steamid) {
                 return json_encode(SteamUser::querySteamData($key, $steamid));
             }));
-        } else if ($cache_driver === 'redis') {
+        } else if ($cache->driver === 'redis') {
             throw new \Exception('Not implemented yet.');
         } else {
             return SteamUser::querySteamData($key, $steamid);
