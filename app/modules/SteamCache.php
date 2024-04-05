@@ -13,14 +13,13 @@ class SteamCache {
      */
     public static function cachedSteamApp($appid, $lang)
     {
-        $cache_driver = env('CACHE_DRIVER', null);
-        $cache_duration = env('CACHE_DURATION', 123);
-
-        if ($cache_driver === 'db') {
-            return json_decode(CacheModel::remember('steam_app_' . $appid . '_' . $lang, $cache_duration, function() use ($appid, $lang) {
+        $cache = config('cache');
+        
+        if ($cache->driver === 'db') {
+            return json_decode(CacheModel::remember('steam_app_' . $appid . '_' . $lang, $cache->duration, function() use ($appid, $lang) {
                 return json_encode(SteamApp::querySteamData($appid, $lang));
             }));
-        } else if ($cache_driver === 'redis') {
+        } else if ($cache->driver === 'redis') {
             throw new \Exception('Not implemented yet.');
         } else {
             return SteamApp::querySteamData($appid, $lang);
