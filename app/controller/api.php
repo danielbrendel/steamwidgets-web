@@ -110,7 +110,7 @@ class ApiController extends BaseController {
         try {
             $group = $request->params()->query('group', null);
 
-            $data = SteamGroup::querySteamData($group);
+            $data = SteamCache::cachedSteamGroup($group);
 
 		    HitsModel::addHit(HitsModel::HITTYPE_MODULE_GROUP);
 
