@@ -2,7 +2,7 @@
 <div class="header">
     <div class="header-overlay">
         <div class="container">
-            <div class="columns">
+            <div class="columns header-centered">
                 <div class="column is-half">
                     <div class="header-content">
                         <h1 class="header-gradient">{{ env('APP_NAME') }}</h1>
