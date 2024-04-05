@@ -68,7 +68,7 @@ class ApiController extends BaseController {
         try {
             $steamid = $request->params()->query('steamid', null);
 
-            $data = SteamUser::querySteamData(env('STEAM_API_KEY'), $steamid);
+            $data = SteamCache::cachedSteamUser(env('STEAM_API_KEY'), $steamid);
 
 		    HitsModel::addHit(HitsModel::HITTYPE_MODULE_USER);
 
