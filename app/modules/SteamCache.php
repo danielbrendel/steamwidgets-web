@@ -38,6 +38,22 @@ class SteamCache {
         }
     }
 
+    public static function cachedSteamWorkshop($itemid)
+    {
+        $cache_driver = env('CACHE_DRIVER', null);
+        $cache_duration = env('CACHE_DURATION', 123);
+
+        if ($cache_driver === 'db') {
+            return json_decode(CacheModel::remember('steam_workshop_' . $itemid, $cache_duration, function() use ($itemid) {
+                return json_encode(SteamWorkshop::querySteamData($itemid));
+            }));
+        } else if ($cache_driver === 'redis') {
+
+        } else {
+            return SteamWorkshop::querySteamData($itemid);
+        }
+    }
+
     public static function cachedSteamGroup($group)
     {
         $cache_driver = env('CACHE_DRIVER', null);

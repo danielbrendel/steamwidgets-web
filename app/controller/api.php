@@ -89,7 +89,7 @@ class ApiController extends BaseController {
         try {
             $itemid = $request->params()->query('itemid', null);
 
-            $data = SteamWorkshop::querySteamData($itemid);
+            $data = SteamCache::cachedSteamWorkshop($itemid);
 
 		    HitsModel::addHit(HitsModel::HITTYPE_MODULE_WORKSHOP);
 
