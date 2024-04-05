@@ -26,7 +26,7 @@ class ApiController extends BaseController {
             $appid = $request->params()->query('appid', null);
             $language = $request->params()->query('lang', 'english');
 
-            $data = SteamApp::querySteamData($appid, $language);
+            $data = SteamCache::cachedSteamApp($appid, $language);
 
 		    HitsModel::addHit(HitsModel::HITTYPE_MODULE_APP);
 
