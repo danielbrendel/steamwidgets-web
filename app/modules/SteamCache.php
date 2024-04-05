@@ -52,14 +52,13 @@ class SteamCache {
      */
     public static function cachedSteamWorkshop($itemid)
     {
-        $cache_driver = env('CACHE_DRIVER', null);
-        $cache_duration = env('CACHE_DURATION', 123);
+        $cache = config('cache');
 
-        if ($cache_driver === 'db') {
-            return json_decode(CacheModel::remember('steam_workshop_' . $itemid, $cache_duration, function() use ($itemid) {
+        if ($cache->driver === 'db') {
+            return json_decode(CacheModel::remember('steam_workshop_' . $itemid, $cache->duration, function() use ($itemid) {
                 return json_encode(SteamWorkshop::querySteamData($itemid));
             }));
-        } else if ($cache_driver === 'redis') {
+        } else if ($cache->driver === 'redis') {
             throw new \Exception('Not implemented yet.');
         } else {
             return SteamWorkshop::querySteamData($itemid);
