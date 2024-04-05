@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Class SteamGroup
  * 
@@ -19,6 +18,15 @@ class SteamGroup
      */
     public static function querySteamData($group)
     {
+        // Generate cache key
+        $cacheKey = 'steam_group_' . $group;
+
+        // Check if data is cached
+        $cachedData = self::getFromCache($cacheKey);
+        if ($cachedData !== false) {
+            return $cachedData;
+        }
+
         $url = '';
 
         if (is_numeric($group)) {
@@ -42,9 +50,53 @@ class SteamGroup
             $result->members->in_game = intval($content->groupDetails->membersInGame->__toString());
             $result->members->online = intval($content->groupDetails->membersOnline->__toString());
 
+            // Store data in cache
+            self::setToCache($cacheKey, $result);
+
             return $result;
         }
 
         return null;
+    }
+
+    /**
+     * Get data from Redis cache
+     *
+     * @param $key
+     * @return mixed|bool
+     */
+    private static function getFromCache($key)
+    {
+        $redis = new Redis();
+        $redis->connect(env('REDIS_HOST'), env('REDIS_PORT'));
+        if (env('REDIS_PASS') !== '') {
+            $redis->auth(env('REDIS_PASS'));
+        }
+        $redis->select(env('REDIS_DATABASE')); // Selecting Redis database index
+        
+        $cachedData = $redis->get($key);
+        if ($cachedData !== false) {
+            return json_decode($cachedData);
+        }
+
+        return false;
+    }
+
+    /**
+     * Set data to Redis cache
+     *
+     * @param $key
+     * @param $value
+     */
+    private static function setToCache($key, $value)
+    {
+        $redis = new Redis();
+        $redis->connect(env('REDIS_HOST'), env('REDIS_PORT'));
+        if (env('REDIS_PASS') !== '') {
+            $redis->auth(env('REDIS_PASS'));
+        }
+        $redis->select(env('REDIS_DATABASE')); // Selecting Redis database index
+
+        $redis->set($key, json_encode($value), env('REDIS_EXPIRATION'));
     }
 }
