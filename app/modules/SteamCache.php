@@ -71,14 +71,13 @@ class SteamCache {
      */
     public static function cachedSteamGroup($group)
     {
-        $cache_driver = env('CACHE_DRIVER', null);
-        $cache_duration = env('CACHE_DURATION', 123);
+        $cache = config('cache');
 
-        if ($cache_driver === 'db') {
-            return json_decode(CacheModel::remember('steam_group_' . $group, $cache_duration, function() use ($group) {
+        if ($cache->driver === 'db') {
+            return json_decode(CacheModel::remember('steam_group_' . $group, $cache->duration, function() use ($group) {
                 return json_encode(SteamGroup::querySteamData($group));
             }));
-        } else if ($cache_driver === 'redis') {
+        } else if ($cache->driver === 'redis') {
             throw new \Exception('Not implemented yet.');
         } else {
             return SteamGroup::querySteamData($group);
