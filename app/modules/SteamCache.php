@@ -21,7 +21,7 @@ class SteamCache {
                 return json_encode(SteamApp::querySteamData($appid, $lang));
             }));
         } else if ($cache_driver === 'redis') {
-
+            throw new \Exception('Not implemented yet.');
         } else {
             return SteamApp::querySteamData($appid, $lang);
         }
@@ -42,7 +42,7 @@ class SteamCache {
                 return json_encode(SteamUser::querySteamData($key, $steamid));
             }));
         } else if ($cache_driver === 'redis') {
-
+            throw new \Exception('Not implemented yet.');
         } else {
             return SteamUser::querySteamData($key, $steamid);
         }
@@ -62,7 +62,7 @@ class SteamCache {
                 return json_encode(SteamWorkshop::querySteamData($itemid));
             }));
         } else if ($cache_driver === 'redis') {
-
+            throw new \Exception('Not implemented yet.');
         } else {
             return SteamWorkshop::querySteamData($itemid);
         }
@@ -82,7 +82,7 @@ class SteamCache {
                 return json_encode(SteamGroup::querySteamData($group));
             }));
         } else if ($cache_driver === 'redis') {
-
+            throw new \Exception('Not implemented yet.');
         } else {
             return SteamGroup::querySteamData($group);
         }
@@ -103,7 +103,7 @@ class SteamCache {
                 return json_encode(SteamServer::querySteamData($key, $addr));
             }));
         } else if ($cache_driver === 'redis') {
-
+            throw new \Exception('Not implemented yet.');
         } else {
             return SteamServer::querySteamData($key, $addr);
         }
