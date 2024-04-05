@@ -842,7 +842,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		</pre>
 
 		<br/><br/>
-		This renders the following widget:<br/>
+		This renders the following widget:<br/><br/>
 		<steam-group group="{{ env('APP_EXAMPLE_GROUP') }}"></steam-group>
 	</p>
 
