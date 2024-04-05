@@ -47,7 +47,7 @@ class ApiController extends BaseController {
         try {
             $addr = $request->params()->query('addr', null);
 
-            $data = SteamServer::querySteamData(env('STEAM_API_KEY'), $addr);
+            $data = SteamCache::cachedSteamServer(env('STEAM_API_KEY'), $addr);
 
 		    HitsModel::addHit(HitsModel::HITTYPE_MODULE_SERVER);
 

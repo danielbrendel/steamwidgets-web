@@ -69,4 +69,20 @@ class SteamCache {
             return SteamGroup::querySteamData($group);
         }
     }
+
+    public static function cachedSteamServer($key, $addr)
+    {
+        $cache_driver = env('CACHE_DRIVER', null);
+        $cache_duration = env('CACHE_DURATION', 123);
+
+        if ($cache_driver === 'db') {
+            return json_decode(CacheModel::remember('steam_server_' . $addr, $cache_duration, function() use ($key, $addr) {
+                return json_encode(SteamServer::querySteamData($key, $addr));
+            }));
+        } else if ($cache_driver === 'redis') {
+
+        } else {
+            return SteamServer::querySteamData($key, $addr);
+        }
+    }
 }
