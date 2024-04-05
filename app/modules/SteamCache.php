@@ -6,6 +6,11 @@
  * Cached gateway to Steam Web API queries
  */
 class SteamCache {
+    /**
+     * @param $appid
+     * @param $lang
+     * @return mixed
+     */
     public static function cachedSteamApp($appid, $lang)
     {
         $cache_driver = env('CACHE_DRIVER', null);
@@ -22,6 +27,11 @@ class SteamCache {
         }
     }
 
+    /**
+     * @param $key
+     * @param $steamid
+     * @return mixed
+     */
     public static function cachedSteamUser($key, $steamid)
     {
         $cache_driver = env('CACHE_DRIVER', null);
@@ -38,6 +48,10 @@ class SteamCache {
         }
     }
 
+    /**
+     * @param $itemid
+     * @return mixed
+     */
     public static function cachedSteamWorkshop($itemid)
     {
         $cache_driver = env('CACHE_DRIVER', null);
@@ -54,6 +68,10 @@ class SteamCache {
         }
     }
 
+    /**
+     * @param $group
+     * @return mixed
+     */
     public static function cachedSteamGroup($group)
     {
         $cache_driver = env('CACHE_DRIVER', null);
@@ -70,6 +88,11 @@ class SteamCache {
         }
     }
 
+    /**
+     * @param $key
+     * @param $addr
+     * @return mixed
+     */
     public static function cachedSteamServer($key, $addr)
     {
         $cache_driver = env('CACHE_DRIVER', null);
