@@ -26,7 +26,7 @@ class ApiController extends BaseController {
             $appid = $request->params()->query('appid', null);
             $language = $request->params()->query('lang', 'english');
 
-            $data = SteamApp::querySteamData($appid, $language);
+            $data = SteamCache::cachedSteamApp($appid, $language);
 
 		    HitsModel::addHit(HitsModel::HITTYPE_MODULE_APP);
 
@@ -47,7 +47,7 @@ class ApiController extends BaseController {
         try {
             $addr = $request->params()->query('addr', null);
 
-            $data = SteamServer::querySteamData(env('STEAM_API_KEY'), $addr);
+            $data = SteamCache::cachedSteamServer(env('STEAM_API_KEY'), $addr);
 
 		    HitsModel::addHit(HitsModel::HITTYPE_MODULE_SERVER);
 
@@ -68,7 +68,7 @@ class ApiController extends BaseController {
         try {
             $steamid = $request->params()->query('steamid', null);
 
-            $data = SteamUser::querySteamData(env('STEAM_API_KEY'), $steamid);
+            $data = SteamCache::cachedSteamUser(env('STEAM_API_KEY'), $steamid);
 
 		    HitsModel::addHit(HitsModel::HITTYPE_MODULE_USER);
 
@@ -89,7 +89,7 @@ class ApiController extends BaseController {
         try {
             $itemid = $request->params()->query('itemid', null);
 
-            $data = SteamWorkshop::querySteamData($itemid);
+            $data = SteamCache::cachedSteamWorkshop($itemid);
 
 		    HitsModel::addHit(HitsModel::HITTYPE_MODULE_WORKSHOP);
 
@@ -110,7 +110,7 @@ class ApiController extends BaseController {
         try {
             $group = $request->params()->query('group', null);
 
-            $data = SteamGroup::querySteamData($group);
+            $data = SteamCache::cachedSteamGroup($group);
 
 		    HitsModel::addHit(HitsModel::HITTYPE_MODULE_GROUP);
 

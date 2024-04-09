@@ -97,6 +97,12 @@ a.navbar-burger:hover {
     height: 100%;
 }
 
+.header-centered {
+    @media screen and (min-width: 1089px) {
+        transform: translateX(9.5%);
+    }
+}
+
 .header-content {
     position: relative;
     top: 50%;
