@@ -34,7 +34,7 @@ class SteamGroup
             $result->groupName = $content->groupDetails->groupName->__toString();
             $result->groupURL = $content->groupDetails->groupURL->__toString();
             $result->groupHeadline = $content->groupDetails->headline->__toString();
-            $result->groupSummary = $content->groupDetails->summary->__toString();
+            $result->groupSummary = Utils::filter_markdown($content->groupDetails->summary->__toString());
             $result->groupAvatar = $content->groupDetails->avatarFull->__toString();
             $result->members = new \stdClass();
             $result->members->count = intval($content->groupDetails->memberCount->__toString());

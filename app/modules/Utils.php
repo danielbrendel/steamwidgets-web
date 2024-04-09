@@ -26,4 +26,21 @@ class Utils
 
         return $url;
     }
+
+    /**
+     * Filter markdown code
+     * 
+     * @param $content
+     * @return string
+     */
+    public static function filter_markdown($content)
+    {
+        $tokens = ['h1', 'h2', 'h3', 'b', 'i', 'u', 'strike', 'spoiler', 'hr'];
+
+        foreach ($tokens as $token) {
+            $content = str_replace(['[' . $token . ']', '[/' . $token . ']'], '', $content);
+        }
+
+        return $content;
+    }
 }

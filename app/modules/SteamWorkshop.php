@@ -39,6 +39,7 @@ class SteamWorkshop
         
         if ((isset($obj->response->result)) && ($obj->response->result) && (isset($obj->response->resultcount)) && ($obj->response->resultcount == 1)) {
             $obj->response->publishedfiledetails[0]->creator_data = null;
+            $obj->response->publishedfiledetails[0]->description = Utils::filter_markdown($obj->response->publishedfiledetails[0]->description);
 
             try {
                 $obj->response->publishedfiledetails[0]->creator_data = SteamUser::querySteamData(env('STEAM_API_KEY'), $obj->response->publishedfiledetails[0]->creator);
