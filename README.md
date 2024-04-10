@@ -73,3 +73,18 @@ DB_CHARSET="utf8mb4"
 CACHE_DRIVER=db
 CACHE_DURATION=123
 ```
+
+5. Run your MySQL server and perform database table migrations
+```sh
+php asatru migrate:fresh
+```
+
+6. Now launch your local development server
+```
+php asatru serve
+```
+The application is now available on http://localhost:8000/.
+
+## Documentation
+
+The documenation of the underlying framework is located inside the `/doc` directory.
