@@ -20,7 +20,13 @@ class SteamCache {
                 return json_encode(SteamApp::querySteamData($appid, $lang));
             }));
         } else if ($cache->driver === 'redis') {
-            throw new \Exception('Not implemented yet.');
+            $data = RedisClient::query('steam_app_' . $appid . '_' . $lang);
+            if ($data === null) {
+                $data = json_encode(SteamApp::querySteamData($appid, $lang));
+                RedisClient::save('steam_app_' . $appid . '_' . $lang, $data);
+            }
+
+            return json_decode($data);
         } else {
             return SteamApp::querySteamData($appid, $lang);
         }
