@@ -1,13 +1,15 @@
 # Build versioned assets
 
-require "textinput";
+require "input";
 require "fileio";
 
-setinput ver "Please enter version to build: ";
-print "Using version: %ver";
-
+global ver string;
 global path string;
+
 getscriptpath path;
+
+input ver "Please enter version to build: ";
+print "Using version: %ver";
 
 function update_asset void(type string, name string)
 {
