@@ -11,7 +11,7 @@
 
 <p align="center">
     <img src="https://img.shields.io/badge/web-php-orange" alt="web-php"/>
-    <img src="https://img.shields.io/badge/db-mysql-pink" alt="db-mysql"/>
+    <img src="https://img.shields.io/badge/db-mysql%20redis-pink" alt="db-mysql-redis"/>
     <img src="https://img.shields.io/badge/license-MIT-blue" alt="license-mit"/>
     <img src="https://img.shields.io/badge/maintained-yes-green" alt="maintained-yes"/>
 </p>
@@ -69,6 +69,11 @@ DB_DATABASE=steamwidgets
 DB_DRIVER=mysql
 DB_CHARSET="utf8mb4"
 
+# Redis settings
+REDIS_SCHEME=tcp
+REDIS_HOST=localhost
+REDIS_PORT=6379
+
 # Caching
 CACHE_DRIVER=db
 CACHE_DURATION=123
@@ -84,6 +89,20 @@ php asatru migrate:fresh
 php asatru serve
 ```
 The application is now available on http://localhost:8000/.
+
+## Building the assets
+
+In order to create versioned assets that are publicly accessible you can run a batch script or a dnyScript using AquaShell.
+
+```
+build_ver.bat
+```
+
+```
+aquashell -e build_ver.dnys
+```
+
+The scripts will prompt you for the version you want to create the assets for. Just enter a version token and the assets will then be created/updated using the required file structure.
 
 ## Documentation
 
