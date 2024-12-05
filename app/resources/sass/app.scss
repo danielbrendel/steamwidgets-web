@@ -45,6 +45,12 @@ a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:hover, .navbar-link.i
     color: rgb(190, 190, 190);
 }
 
+.navbar-end .navbar-item {
+    @media screen and (min-width: 1087px) {
+        padding-left: unset;
+    }
+}
+
 .navbar-dropdown {
     background-color: rgb(50, 50, 48);
 }
