@@ -39,21 +39,6 @@ function update_resource void(name string)
 	call update_asset("css", "%name") => void;
 };
 
-#call update_asset("js", "steam_app") => void;
-#call update_asset("css", "steam_app") => void;
-
-#call update_asset("js", "steam_group") => void;
-#call update_asset("css", "steam_group") => void;
-
-#call update_asset("js", "steam_server") => void;
-#call update_asset("css", "steam_server") => void;
-
-#call update_asset("js", "steam_user") => void;
-#call update_asset("css", "steam_user") => void;
-
-#call update_asset("js", "steam_workshop") => void;
-#call update_asset("css", "steam_workshop") => void;
-
 call update_resource("steam_app") => void;
 call update_resource("steam_group") => void;
 call update_resource("steam_server") => void;
