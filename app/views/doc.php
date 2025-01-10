@@ -508,7 +508,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				</tr>
 
 				<tr class="tr-colored">
-					<td>member-since/member_since</td>
+					<td>slogan</td>
 					<td>Specifies the text and format of the info that shows since when the user account is registered. Use <b>:year</b>, <b>:month</b> and <b>:day</b> to format the date.</td>
 				</tr>
 
@@ -594,7 +594,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				</tr>
 
 				<tr>
-					<td>changeLang(online_yes, online_no, member_since, viewtext)</td>
+					<td>changeLang(online_yes, online_no, slogan, viewtext)</td>
 					<td>Changes the language of the widget using the given information</td>
 				</tr>
 
