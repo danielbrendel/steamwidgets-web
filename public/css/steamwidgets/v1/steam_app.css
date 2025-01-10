@@ -19,6 +19,12 @@
     background-size: 100% 100%;
 }
 
+@media screen and (max-width: 400px) {
+    .steam-app-image {
+        height: 145px;
+    }
+}
+
 .steam-app-infos {
     position: relative;
     padding: 15px;
