@@ -108,7 +108,7 @@
     color: rgb(250, 250, 250);
 }
 
-@media screen and (max-width: 465px) {
+@media screen and (max-width: 548px) {
     .steam-workshop {
         min-width: unset;
         width: 350px;
@@ -146,5 +146,16 @@
 
     .steam-workshop-info-footer-author {
         width: 64%;
+    }
+}
+
+@media screen and (max-width: 401px) {
+    .steam-workshop {
+        width: 323px;
+    }
+
+    .steam-workshop-preview {
+        width: 323px;
+        height: 302px;
     }
 }
