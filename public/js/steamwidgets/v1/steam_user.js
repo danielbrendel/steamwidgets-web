@@ -158,7 +158,7 @@
                                 
                                 <div class="steam-user-infos-left-text">
                                     <div class="steam-user-infos-left-text-name" ` + ((styleColorTextBright !== null) ? 'style="color: ' + styleColorTextBright + ';"' : '') + `>` + json.data.personaname + `</div>
-                                    <div class="steam-user-infos-left-text-since" ` + ((styleColorTextDark !== null) ? 'style="color: ' + styleColorTextDark + ';"' : '') + `>` + slogan + `</div>
+                                    <div class="steam-user-infos-left-text-slogan" ` + ((styleColorTextDark !== null) ? 'style="color: ' + styleColorTextDark + ';"' : '') + `>` + slogan + `</div>
                                 </div>
                             </div>
 
