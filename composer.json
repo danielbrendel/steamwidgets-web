@@ -18,10 +18,10 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
 	"require": {
-        "php": "^8.0",
-		"danielbrendel/asatru-php-framework": "^1.0",
+        "php": "^8.3",
+		"danielbrendel/asatru-php-framework": "^1.5",
         "phpmailer/phpmailer": "^6.1",
-        "nesbot/carbon": "^2.0",
+        "nesbot/carbon": "^3.0",
         "predis/predis": "^2.2"
     },
 	"scripts": {
