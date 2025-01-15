@@ -5,7 +5,7 @@
 
 <p align="center">
     Embed various Steam widgets in your web document<br/>
-    (C) 2022 - 2024 by Daniel Brendel<br/>
+    (C) 2022 - 2025 by Daniel Brendel<br/>
     Released under the MIT license
 </p>
 
